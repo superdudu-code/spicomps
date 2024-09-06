@@ -1,0 +1,10 @@
+#!/bin/sh
+# 此脚本旨在通过Husky和commitlint在提交时检查提交信息的格式。
+# 它会读取commitlint.config.js文件作为配置，并对即将提交的commit信息进行校验。
+
+. "$(dirname "$0")/_/husky.sh" # 加载Husky的初始化脚本，以启用Git钩子功能。
+
+# 执行commitlint来校验提交信息。--config指定了commitlint的配置文件，--edit表示对即将提交的commit信息进行编辑。
+pnpm exec commitlint --config commitlint.config.js --edit "${1}"
+# 参数说明:
+# ${1} 代表传入的的第一个参数，通常是Git钩子事件的名称，但在此脚本中未直接使用。

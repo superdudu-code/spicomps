@@ -1,0 +1,13 @@
+{
+  "name": "@spicomps/base-components",
+  "version": "0.0.1",
+  "main": "index.ts",
+  "module": "index.ts",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js",
+  "peerDependencies": {
+    "vue": "^3.4.29"
+  },
+  "types": "index.d.ts",
+  "sideEffects": false
+}

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "dist", // 指定输出目录
+    "target": "es2018", // 目标语言的版本
+    "module": "esnext", // 生成代码的模板标准
+    "baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录
+    "sourceMap": false, // 是否生成相应的Map映射的文件，默认：false
+    "moduleResolution": "node", // 指定模块解析策略，node或classic
+    "allowJs": false, // 是否允许编译器编译JS，JSX文件
+    "strict": true, // 是否启动所有严格检查的总开关，默认：false，启动后将开启所有的严格检查选项
+    "noUnusedLocals": true, // 是否检查未使用的局部变量，默认：false
+    "resolveJsonModule": true, // 是否解析 JSON 模块，默认：false
+    "allowSyntheticDefaultImports": true, // 是否允许从没有默认导出的模块中默认导入，默认：false
+    "esModuleInterop": true, // 是否通过为所有导入模块创建命名空间对象，允许CommonJS和ES模块之间的互操作性，开启改选项时，也自动开启allowSyntheticDefaultImports选项，默认：false
+    "removeComments": false, // 删除注释
+    "rootDir": ".", // 指定输出文件目录(用于输出)，用于控制输出目录结构
+    "types": [],
+    "paths": {
+      // 路径映射，相对于baseUrl
+      "@spicomps/*": ["packages/*"]
+    }
+  }
+}
