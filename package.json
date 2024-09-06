@@ -20,6 +20,7 @@
     "url": "git+https://github.com/superdudu-code/spicomps.git"
   },
   "scripts": {
+    "cz": "czg",
     "dev": "pnpm -C play dev",
     "runall": "pnpm run typecheck:web && pnpm run typecheck:play",
     "typecheck:web": "vue-tsc -p tsconfig.web.json --composite false --noEmit",
@@ -51,6 +52,7 @@
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
+    "czg": "^1.9.4",
     "eslint": "^8.18.0",
     "eslint-plugin-vue": "^9.23.0",
     "fast-glob": "^3.2.11",
