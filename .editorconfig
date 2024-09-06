@@ -1,0 +1,16 @@
+root = true
+
+[*]
+charset = utf-8
+# 使用空格进行缩进，而非制表符
+indent_style = space
+# 每个层级的缩进大小为 2 个空格
+indent_size = 2
+# 行尾换行符使用 LF (Unix) 格式
+end_of_line = lf
+# 在文件末尾自动添加新行
+insert_final_newline = true
+# 自动删除行尾的多余空格
+trim_trailing_whitespace = true
+# 引用字符串默认使用单引号
+quote_type = single

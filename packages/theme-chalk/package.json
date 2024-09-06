@@ -1,0 +1,9 @@
+{
+  "name": "@spicomps/theme-chalk",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "index.css",
+  "unpkg": "index.css",
+  "jsdelivr": "index.css",
+  "style": "index.css"
+}

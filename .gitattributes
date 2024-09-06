@@ -1,0 +1,19 @@
+#
+# 此文件用于配置不同文件类型的属性，主要关注于语言检测设置。
+# 文件使用键值对的形式，其中键表示文件扩展名，值则为该文件类型的属性设置。
+# 属性设置可以包含多个指令，用等号分隔。这里的指令主要关注于"linguist-detectable"，
+# 用于告诉GitHub的Linguist库是否应检测和统计特定文件类型。
+#
+
+# 配置所有文本文件默认的行尾字符为LF
+text=auto eol=lf
+
+# 接下来，对于特定的文件类型，设置其是否被Linguist库检测。
+# 对于CSS、SCSS和TS文件，这里设置为不进行检测。
+*.ts linguist-detectable=false
+*.css linguist-detectable=false
+*.scss linguist-detectable=false
+
+# 对于JS和Vue文件，设置为允许Linguist库进行检测。
+*.js linguist-detectable=true
+*.vue linguist-detectable=true
