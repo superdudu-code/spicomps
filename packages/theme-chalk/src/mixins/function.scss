@@ -1,0 +1,79 @@
+@use 'config';
+
+/**
+ * 该函数将选择器转化为字符串，并截取指定位置的字符。
+ * @param $selector - 需要转换的选择器对象。
+ * @return 返回转换后的选择器字符串。
+ */
+@function selectorToString($selector) {
+  $selector: inspect(
+    $selector
+  ); // 使用inspect函数将选择器转化为字符串，出现错误时会抛出异常
+  $selector: str-slice(
+    $selector,
+    2,
+    -2
+  ); // 使用str-slice函数截取字符串，去除首尾字符
+  @return $selector;
+}
+
+/**
+ * 判断父级选择器是否包含'--'
+ * @param $selector - 需要检查的选择器，可以是列表或字符串。
+ * @returns 如果选择器包含修饰符，则返回 true；否则返回 false。
+ */
+@function containsModifier($selector) {
+  $selector: selectorToString($selector); // 将选择器转换为字符串
+
+  @if str-index($selector, config.$modifier-separator) {
+    // 使用str-index函数查找'--'的存在位置，如果存在则返回true
+    @return true;
+  } @else {
+    // 如果没有找到修饰符分隔符，返回 false
+    @return false;
+  }
+}
+
+/**
+ * 判断父级选择器是否包含'.is-'
+ * @param $selector - 需要检查的选择器，可以是任何形式的选择器。
+ * @return 返回一个布尔值，如果选择器包含状态前缀则为true，否则为false。
+ */
+@function containWhenFlag($selector) {
+  $selector: selectorToString($selector); // 将选择器转换为字符串
+
+  @if str-index($selector, '.' + config.$state-prefix) {
+    // 使用str-index函数查找'.is-'的存在位置，如果存在则返回true
+    @return true;
+  } @else {
+    // 如果选择器中不包含状态前缀，返回false
+    @return false;
+  }
+}
+
+/**
+ * 判断父级是否包含 ':' （用于判断伪类和伪元素）
+ * @param $selector - 需要检查的选择器，可以是任何形式的选择器，函数会将其转换为字符串形式。
+ * @return 返回一个布尔值，如果选择器包含伪类，则返回 true；否则返回 false。
+ */
+@function containPseudoClass($selector) {
+  $selector: selectorToString($selector); // 将选择器转换为字符串
+
+  @if str-index($selector, ':') {
+    // 使用str-index函数查找':'的存在位置，如果存在则返回true
+    @return true;
+  } @else {
+    // 如果选择器中不包含':'，返回false
+    @return false;
+  }
+}
+
+/*
+ * 判断父级选择器是否包含`--` `.is-` `:`这三种字符
+ * @param {String} $selector 选择器
+ * @return {String} 如果父级选择器包含以上三种字符中的任意一种，返回true；否则返回false
+*/
+@function hitAllSpecialNestRule($selector) {
+  @return containsModifier($selector) or containWhenFlag($selector) or
+    containPseudoClass($selector); // 判断是否包含特殊字符
+}
