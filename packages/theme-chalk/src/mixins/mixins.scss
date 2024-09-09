@@ -1,0 +1,102 @@
+@use 'config' as *;
+@use 'function' as *;
+
+/**
+ * 定义 Block。
+ * @param $block - 指定的块名，将与全局命名空间和通用分隔符组合，用作类名。
+ * @content - 在生成的类中注入的内容。
+ */
+@mixin b($block) {
+  // 生成全局类名，并将其设置为当前作用域的一个变量。
+  $B: $namespace + $common-separator + $block !global;
+  // 使用动态生成的类名，插入传入的内容。
+  .#{$B} {
+    @content;
+  }
+}
+
+/**
+ * 定义 Element
+ * @param $element - 一个包含元素名称的列表，这些元素将被用来构建选择器。
+ */
+@mixin e($element) {
+  // 设置全局变量$E为传入的元素参数，用于后续的引用。
+  $E: $element !global;
+  // 使用&引用当前的选择器，为后续构建更复杂的选择器做准备。
+  $selector: &;
+  // 初始化$currentSelector为空字符串，后续将拼接成完整的选择器字符串。
+  $currentSelector: '';
+
+  // 遍历$element列表，将每个单元拼接到选择器字符串中。
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector +
+      '.' +
+      $B +
+      $element-separator +
+      $unit +
+      ','};
+  }
+
+  // 检查是否需要应用特殊的嵌套规则。
+  // 如果是，则使用@at-root将内容提升到当前选择器的外部，并嵌套在指定的选择器下。
+  // 如果不是，则直接使用@at-root将内容提升到当前选择器的外部。
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+
+/**
+ * 定义修改器
+ * @param $modifier 一个包含修饰符单元的列表，这些修饰符将被添加到基础选择器之后。
+ *                  每个修饰符单元将会以指定的分隔符连接到基础选择器上，生成完整的选择器。
+ *                  例如，如果基础选择器是 ".class"，修饰符列表是 ["a", "b", "c"]，且分隔符是 "--"，
+ *                  那么将生成 ".class--a, .class--b, .class--c" 这些选择器。
+ * @content 在调用此mixin时提供的内容，将被放置在生成的选择器内部。
+ */
+@mixin m($modifier) {
+  $selector: &; // 存储当前的作用域选择器
+  $currentSelector: ''; // 初始化当前选择器字符串为空
+
+  // 遍历传入的修饰符列表，生成完整的选择器字符串
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector +
+      $selector +
+      $modifier-separator +
+      $unit +
+      ','};
+  }
+
+  // 使用@at-root指令，将内容置于顶层DOM结构中，确保生成的选择器生效
+  @at-root {
+    #{$currentSelector} {
+      @content; // 插入在mixin调用时提供的内容
+    }
+  }
+}
+
+/**
+ * 定义动作状态。
+ * @mixin when 一个用于根据状态动态生成样式的mixin。
+ * @param $state 状态名称，将被用作选择器的一部分。
+ * @content mixin内的内容将被插入到生成的选择器中。
+ */
+@mixin when($state) {
+  @at-root {
+    // 生成一个带有状态前缀的选择器，并插入内容
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
