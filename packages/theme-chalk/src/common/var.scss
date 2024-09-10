@@ -1,0 +1,137 @@
+@use 'sass:math';
+@use 'sass:map';
+// 默认颜色映射，使用 deep-merge 来允许用户自定义颜色映射覆盖默认值
+$colors: () !default;
+$colors: map.deep-merge(
+  (
+    // 白色和黑色作为基本颜色选项
+    'white': #ffffff,
+    'black': #000000,
+    // 为每种主题类型定义一个基础颜色
+    'primary':
+      (
+        'base': #409eff,
+      ),
+    'success': (
+      'base': #67c23a,
+    ),
+    'warning': (
+      'base': #e6a23c,
+    ),
+    'error': (
+      'base': #f56c6c,
+    ),
+    'info': (
+      'base': #909399,
+    )
+  ),
+  $colors
+);
+
+// 主色调
+$color-white: map.get($colors, 'white') !default; // 白色
+$color-black: map.get($colors, 'black') !default; // 黑色
+
+// 应用场景颜色，默认使用'base'色调
+$color-primary: map.get($colors, 'primary', 'base') !default; // 主要颜色
+$color-success: map.get($colors, 'success', 'base') !default; // 成功状态颜色
+$color-warning: map.get($colors, 'warning', 'base') !default; // 警告状态颜色
+$color-error: map.get($colors, 'error', 'base') !default; // 错误状态颜色
+$color-info: map.get($colors, 'info', 'base') !default; // 信息状态颜色
+
+// 定义可用的主题类型
+$types: primary, success, warning, error, info;
+
+/**
+ * 该@mixin用于根据指定的颜色类型、级别和混合模式，创建一个新颜色等级并将其添加到全局颜色地图中。
+ * @param $type {string} - 颜色的类型（例如：primary, success等）。
+ * @param $number {int} - 颜色的级别，用于计算颜色的混合程度。
+ * @param $mode {string} - 混合模式，默认为'light'。可用于指定颜色是明度混合还是饱和度混合等。
+ * @param $mix-color {color} - 用于混合的颜色，默认为白色($color-white)。
+ */
+@mixin set-color-mix-level(
+  $type,
+  $number,
+  $mode: 'light',
+  $mix-color: $color-white
+) {
+  // 深度合并颜色地图，添加新的颜色等级
+  $colors: map.deep-merge(
+    (
+      $type: (
+        '#{$mode}-#{$number}':
+          mix(
+            $mix-color,
+            map.get($colors, $type, 'base'),
+            math.percentage(math.div($number, 10))
+          ),
+      ),
+    ),
+    $colors
+  ) !global; // 将局部变量转换为全局变量，确保新的颜色等级可以在整个项目中使用
+}
+
+// 亮色模式 --sp-color-primary-light-3
+@each $type in $types {
+  @for $i from 1 through 9 {
+    @include set-color-mix-level($type, $i, 'light', $color-white);
+  }
+}
+
+// 暗色模式  --sp-color-primary-dark-2
+@each $type in $types {
+  @include set-color-mix-level($type, 2, 'dark', $color-black);
+}
+
+// 文本颜色
+$text-color: () !default;
+$text-color: map.merge(
+  (
+    'primary': #303133,
+    'regular': #606266,
+    'secondary': #909399,
+    'placeholder': #a8abb2,
+    'disabled': #c0c4cc,
+  ),
+  $text-color
+);
+
+// 边框颜色
+$border-color: () !default;
+$border-color: map.merge(
+  (
+    '': #dcdfe6,
+    'light': #e4e7ed,
+    'lighter': #ebeef5,
+    'extra-light': #f2f6fc,
+    'dark': #d4d7de,
+    'darker': #cdd0d6,
+  ),
+  $border-color
+);
+
+// 填充颜色
+$fill-color: () !default;
+$fill-color: map.merge(
+  (
+    '': #f0f2f5,
+    'light': #f5f7fa,
+    'lighter': #fafafa,
+    'extra-light': #fafcff,
+    'dark': #ebedf0,
+    'darker': #e6e8eb,
+    'blank': #ffffff,
+  ),
+  $fill-color
+);
+
+// 背景颜色
+$bg-color: () !default;
+$bg-color: map.merge(
+  (
+    '': #ffffff,
+    'page': #f2f3f5,
+    'overlay': #ffffff,
+  ),
+  $bg-color
+);

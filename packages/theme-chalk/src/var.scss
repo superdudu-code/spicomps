@@ -1,0 +1,28 @@
+@use 'common/var' as *;
+@use 'mixins/var' as *;
+
+// 公共变量
+:root {
+  @include set-css-var-value('color-white', $color-white);
+  @include set-css-var-value('color-black', $color-black);
+}
+
+// 亮色模式
+:root {
+  color-scheme: light;
+
+  // --sp-color-#{$type}
+  // --sp-color-#{$type}-light-{$i}
+  @each $type in $types {
+    @include set-css-color-type($colors, $type);
+  }
+
+  // --sp-text-color-#{$type}
+  @include set-component-css-var('text-color', $text-color);
+  // --sp-border-color-#{$type}
+  @include set-component-css-var('border-color', $border-color);
+  // Fill --sp-fill-color-#{$type}
+  @include set-component-css-var('fill-color', $fill-color);
+  // Background --sp-bg-color-#{$type}
+  @include set-component-css-var('bg-color', $bg-color);
+}

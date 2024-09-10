@@ -77,3 +77,28 @@
   @return containsModifier($selector) or containWhenFlag($selector) or
     containPseudoClass($selector); // 判断是否包含特殊字符
 }
+
+/**
+ * 函数用于将给定列表中的项目连接成一个变量名。
+ * @param $list - 一个包含要连接的字符串的列表。
+ * @return $name - 连接后的变量名，以"--"和配置中的命名空间开头，每个列表项之间用"-"连接。
+   --sp-color-primary-light-3
+ */
+@function joinVarName($list) {
+  // 初始化变量名，以"--"和配置中的命名空间开头
+  $name: '--' + config.$namespace;
+  // 遍历列表中的每个项目
+  @each $item in $list {
+    // 如果项目不为空，则将其添加到变量名中
+    @if $item != '' {
+      $name: $name + '-' + $item;
+    }
+  }
+  // 返回连接后的变量名
+  @return $name;
+}
+
+// getCssVarName('button', 'text-color') => '--sp-button-text-color'
+@function getCssVarName($args...) {
+  @return joinVarName($args);
+}
