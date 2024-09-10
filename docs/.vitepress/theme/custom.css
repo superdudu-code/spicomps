@@ -1,0 +1,22 @@
+:root {
+  --vp-c-indigo-1: #409eff;
+  --vp-c-indigo-2: #79bbff;
+  --vp-c-indigo-3: #409eff;
+}
+
+body {
+  color: var(--vp-c-text-1);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: var(--vp-c-text-1);
+}
+
+.vitepress-demo-preview-preview {
+  padding: 20px !important;
+}

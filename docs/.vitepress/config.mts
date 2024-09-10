@@ -39,7 +39,7 @@ export default defineConfig({
   lang: 'cn-ZH',
   base: build ? '/spicomps/' : '/',
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/logo_image.png',
     siteTitle: 'Spicomps',
     outline: 3,
     // https://vitepress.dev/reference/default-theme-config

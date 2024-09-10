@@ -7,7 +7,7 @@ hero:
   text: '一个特别的组件库'
   tagline: 组件库描述
   image:
-    src: /logo.png
+    src: /logo_image.png
     alt: VitePress
   actions:
     - theme: brand
