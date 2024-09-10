@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "description": "一个\"特别\"的组件库",
-  "type": "module",
   "keywords": [
     "vue",
     "components",
@@ -32,6 +31,7 @@
     "runall": "pnpm run typecheck:web && pnpm run typecheck:play",
     "typecheck:web": "vue-tsc -p tsconfig.web.json --composite false --noEmit",
     "typecheck:play": "vue-tsc -p tsconfig.play.json --composite false --noEmit",
+    "format": "prettier --write --cache .",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
     "lint:fix": "pnpm run lint --fix",
     "prepare": "husky install"
