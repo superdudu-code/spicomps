@@ -34,7 +34,10 @@
     "format": "prettier --write --cache .",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
     "lint:fix": "pnpm run lint --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docs:dev": "pnpm run -C docs dev",
+    "docs:build": "pnpm run -C docs build",
+    "docs:deploy": "pnpm run docs:build && gh-pages -d docs/.vitepress/dist"
   },
   "dependencies": {
     "@spicomps/base-components": "workspace:^",
@@ -63,6 +66,7 @@
     "eslint": "^8.18.0",
     "eslint-plugin-vue": "^9.23.0",
     "fast-glob": "^3.2.11",
+    "gh-pages": "^6.1.1",
     "husky": "^8.0.1",
     "jsdom": "^24.1.0",
     "lint-staged": "^13.0.3",

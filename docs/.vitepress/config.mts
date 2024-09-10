@@ -3,8 +3,12 @@ import {
   componentPreview,
   containerPreview,
 } from '@vitepress-demo-preview/plugin'
+import minimist from 'minimist'
 import { components } from '../components'
 import type { DefaultTheme } from 'vitepress'
+
+const argv = minimist(process.argv.slice(2))
+const build = argv.build || false
 
 const nav: DefaultTheme.NavItem[] = [
   { text: '指南', link: '/guide/' },
@@ -33,7 +37,7 @@ export default defineConfig({
   title: 'Spicomps',
   description: '一个特别的组件库',
   lang: 'cn-ZH',
-  base: '/',
+  base: build ? '/spicomps/' : '/',
   themeConfig: {
     logo: '/logo.png',
     siteTitle: 'Spicomps',
