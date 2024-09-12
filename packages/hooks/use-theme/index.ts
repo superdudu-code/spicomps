@@ -1,47 +1,45 @@
-import {
-  hexToRgb,
-  mixColors,
-  rgbToHex,
-  setColorMixLevel,
-  setCssVariables,
-} from '@spicomps/utils'
+import { setColorMixLevel, setCssVariables } from '@spicomps/utils'
+import type {
+  ConfigProviderColorTheme,
+  ConfigProviderTheme,
+} from '@spicomps/base-components/config-provider'
 
-// const theme1 = {
-//   common: {
-//     primaryColor: appStore.themeColor,
-//     primaryColorSuppl: appStore.themeColor,
-//     primaryColorHover: appStore.lightenColor,
-//     primaryColorPressed: appStore.lightenColor
-//   },
-//   LoadingBar: {
-//     colorLoading: appStore.themeColor
-//   }
-// }
-export const useThemeChange = (theme: any) => {
-  if (theme.common.primaryColor) {
-    const obj: { [key: string]: string } = {
-      '--sp-color-primary': theme.common.primaryColor,
-    }
+export const useThemeChange = (theme: ConfigProviderTheme) => {
+  if (theme.colorTheme) {
+    colorChange(theme.colorTheme)
+  }
+}
+
+/**
+ * 改变颜色
+ */
+type ThemeKey = keyof ConfigProviderColorTheme
+const typeMap = {
+  primaryColor: 'primary',
+  warningColor: 'warning',
+  successColor: 'success',
+  dangerColor: 'danger',
+  infoColor: 'info',
+}
+function colorChange(coloTheme: ConfigProviderColorTheme) {
+  const obj: { [key: string]: string } = {}
+  Object.keys(coloTheme).forEach((v) => {
+    const key = v as ThemeKey
+    const value = coloTheme[key]!
+    const type = typeMap[key]
+    obj[`--sp-color-${type}`] = value
+
     const numList = [3, 5, 7, 8, 9]
     numList.forEach((num) => {
-      const color = setColorMixLevel(
-        theme.common.primaryColor,
-        num,
-        'light',
-        '#ffffff'
-      )
+      const color = setColorMixLevel(value, num, 'light', '#ffffff')
 
-      obj[`--sp-color-primary-light-${num}`] = color
+      obj[`--sp-color-${type}-light-${num}`] = color
     })
 
-    const color = setColorMixLevel(
-      theme.common.primaryColor,
-      2,
-      'dark',
-      '#000000'
-    )
+    const color = setColorMixLevel(value, 2, 'dark', '#000000')
 
-    obj[`--sp-color-primary-dark-${2}`] = color
-    setCssVariables(obj)
-  }
+    obj[`--sp-color-${type}-dark-${2}`] = color
+  })
+
+  setCssVariables(obj)
 }
