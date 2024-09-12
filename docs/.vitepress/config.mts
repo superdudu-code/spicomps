@@ -25,11 +25,7 @@ const sidebar: DefaultTheme.Sidebar = {
       ],
     },
   ],
-  '/components': [
-    {
-      items: [...components],
-    },
-  ],
+  '/components': components,
 }
 
 // https://vitepress.dev/reference/site-config
