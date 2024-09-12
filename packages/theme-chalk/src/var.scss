@@ -1,4 +1,5 @@
 @use 'common/var' as *;
+@use 'mixins/mixins' as *;
 @use 'mixins/var' as *;
 
 // 公共变量
@@ -25,4 +26,18 @@
   @include set-component-css-var('fill-color', $fill-color);
   // Background --sp-bg-color-#{$type}
   @include set-component-css-var('bg-color', $bg-color);
+
+  // foot
+  @include set-css-var-value('font-weight-primary', 500);
+  @include set-css-var-value('font-line-height-primary', 24px);
+
+  // Border
+  @include set-css-var-value('border-width', $border-width);
+  @include set-css-var-value('border-style', $border-style);
+  @include set-css-var-value('border-color-hover', $border-color-hover);
+  @include set-css-var-value(
+    'border',
+    getCssVar('border-width') getCssVar('border-style')
+      getCssVar('border-color')
+  );
 }

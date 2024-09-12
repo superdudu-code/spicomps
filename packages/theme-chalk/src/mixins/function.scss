@@ -98,7 +98,22 @@
   @return $name;
 }
 
-// getCssVarName('button', 'text-color') => '--sp-button-text-color'
+/**
+ * 函数用于将给定列表中的项目连接成一个 CSS 变量名。
+ * @param $args - 一个包含要连接的字符串的列表。
+ * @return $name - 连接后的 CSS 变量名，以"--"和配置中的命名空间开头，每个列表项之间用"-"连接。
+   getCssVarName('button', 'text-color') => '--sp-button-text-color'
+ */
 @function getCssVarName($args...) {
   @return joinVarName($args);
+}
+
+/**
+ * 函数用于获取 CSS 变量值。
+ * @param $args - 一个包含要连接的字符串的列表。
+ * @return $name - 连接后的 CSS 变量名，以"--"和配置中的命名空间开头，每个列表项之间用"-"连接。
+   getCssVar('button', 'text-color') => 'var(--sp-button-text-color)'
+ */
+@function getCssVar($args...) {
+  @return var(#{joinVarName($args)});
 }

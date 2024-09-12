@@ -1,0 +1,128 @@
+@use 'sass:map';
+
+@use '../base.scss' as *;
+
+@include b(button) {
+  @include set-component-css-var(
+    button,
+    (
+      bg-color: #fff,
+      bg-color-disabled: getCssVar('fill-color-blank'),
+      border-color: getCssVar('border-color'),
+      border-color-hover: getCssVar('color-primary'),
+      border-color-active: getCssVar('color-primary'),
+      border-color-disabled: getCssVar('border-color-link'),
+      text-color: getCssVar('text-color-regular'),
+      text-color-hover: getCssVar('color-primary'),
+      text-color-active: getCssVar('color-primary'),
+      text-color-disabled: getCssVar('text-color-disabled'),
+      padding-vertical: 8px,
+      padding-horizontal: 15px,
+
+      border-radius-base: 4px,
+
+      box-shadow: none,
+      box-shadow-hover: none,
+    )
+  );
+}
+
+@include b(button) {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 1;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+  transition: 0.1s;
+
+  color: getCssVar('button', 'text-color');
+  background-color: getCssVar('button', 'bg-color');
+  border: getCssVar('border');
+  border-color: getCssVar('button', 'border-color');
+  border-radius: getCssVar('button', 'border-radius-base');
+
+  padding: getCssVar('button', 'padding-vertical')
+    getCssVar('button', 'padding-horizontal');
+
+  &:hover {
+    color: getCssVar('button', 'text-color-hover');
+    background-color: getCssVar('button', 'bg-color-hover');
+    border-color: getCssVar('button', 'border-color-hover');
+  }
+  &:active {
+    color: getCssVar('button', 'text-color-active');
+    background-color: getCssVar('button', 'bg-color-active');
+    border-color: getCssVar('button', 'border-color-active');
+  }
+
+  @include when(disabled) {
+    &,
+    &:hover {
+      color: getCssVar('button', 'text-color', 'disabled');
+      cursor: not-allowed;
+      background-image: none;
+      background-color: getCssVar('button', 'bg-color', 'disabled');
+      border-color: getCssVar('button', 'border-color', 'disabled');
+    }
+  }
+
+  // 设置不同类型的颜色
+  @each $type in (primary, success, warning, danger, info) {
+    // .sp-button--primary ...
+    @include m($type) {
+      @include css-var-from-global(('button', 'text-color'), ('color', white));
+      @include css-var-from-global(('button', 'bg-color'), ('color', $type));
+      @include css-var-from-global(
+        ('button', 'border-color'),
+        ('color', $type)
+      );
+      // hover
+      @include css-var-from-global(
+        ('button', 'text-color-hover'),
+        ('color', white)
+      );
+      @include css-var-from-global(
+        ('button', 'bg-color-hover'),
+        ('color', $type, 'light-3')
+      );
+      @include css-var-from-global(
+        ('button', 'border-color-hover'),
+        ('color', $type, 'light-3')
+      );
+      // active
+      @include css-var-from-global(
+        ('button', 'text-color-active'),
+        ('color', white)
+      );
+      @include css-var-from-global(
+        ('button', 'bg-color-active'),
+        ('color', $type, 'dark-2')
+      );
+      @include css-var-from-global(
+        ('button', 'border-color-active'),
+        ('color', $type, 'dark-2')
+      );
+      // disabled
+      @include css-var-from-global(
+        ('button', 'text-color-disabled'),
+        ('color', white)
+      );
+      @include css-var-from-global(
+        ('button', 'bg-color-disabled'),
+        ('color', $type, 'light-5')
+      );
+      @include css-var-from-global(
+        ('button', 'border-color-disabled'),
+        ('color', $type, 'light-5')
+      );
+    }
+  }
+
+  & + & {
+    margin-left: 12px;
+  }
+}

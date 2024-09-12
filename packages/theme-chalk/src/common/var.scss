@@ -1,5 +1,8 @@
 @use 'sass:math';
 @use 'sass:map';
+
+@use '../mixins/function.scss' as *;
+
 // 默认颜色映射，使用 deep-merge 来允许用户自定义颜色映射覆盖默认值
 $colors: () !default;
 $colors: map.deep-merge(
@@ -18,7 +21,7 @@ $colors: map.deep-merge(
     'warning': (
       'base': #e6a23c,
     ),
-    'error': (
+    'danger': (
       'base': #f56c6c,
     ),
     'info': (
@@ -36,11 +39,11 @@ $color-black: map.get($colors, 'black') !default; // 黑色
 $color-primary: map.get($colors, 'primary', 'base') !default; // 主要颜色
 $color-success: map.get($colors, 'success', 'base') !default; // 成功状态颜色
 $color-warning: map.get($colors, 'warning', 'base') !default; // 警告状态颜色
-$color-error: map.get($colors, 'error', 'base') !default; // 错误状态颜色
+$color-danger: map.get($colors, 'danger', 'base') !default; // 错误状态颜色
 $color-info: map.get($colors, 'info', 'base') !default; // 信息状态颜色
 
 // 定义可用的主题类型
-$types: primary, success, warning, error, info;
+$types: primary, success, warning, danger, info;
 
 /**
  * 该@mixin用于根据指定的颜色类型、级别和混合模式，创建一个新颜色等级并将其添加到全局颜色地图中。
@@ -134,4 +137,31 @@ $bg-color: map.merge(
     'overlay': #ffffff,
   ),
   $bg-color
+);
+
+// 大小
+$common-component-size: () !default;
+$common-component-size: map.merge(
+  (
+    'large': 40px,
+    'default': 32px,
+    'small': 24px,
+  ),
+  $common-component-size
+);
+
+// Border
+$border-width: 1px !default;
+$border-style: solid !default;
+$border-color-hover: getCssVar('text-color', 'disabled') !default;
+
+$border-radius: () !default;
+$border-radius: map.merge(
+  (
+    'base': 4px,
+    'small': 2px,
+    'round': 20px,
+    'circle': 100%,
+  ),
+  $border-radius
 );

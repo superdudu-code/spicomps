@@ -1,10 +1,16 @@
 @use 'config' as *;
 @use 'function' as *;
+@use '../common/var' as *;
+// forward mixins
+@forward 'config';
+@forward 'function';
+@forward '_var';
 
 /**
  * 定义 Block。
  * @param $block - 指定的块名，将与全局命名空间和通用分隔符组合，用作类名。
  * @content - 在生成的类中注入的内容。
+ * 如：@include b(button) 设置 .sp-button 的样式
  */
 @mixin b($block) {
   // 生成全局类名，并将其设置为当前作用域的一个变量。
@@ -18,6 +24,7 @@
 /**
  * 定义 Element
  * @param $element - 一个包含元素名称的列表，这些元素将被用来构建选择器。
+ * 如 @include e(text) 生成 .sp-button__text 的样式
  */
 @mixin e($element) {
   // 设置全局变量$E为传入的元素参数，用于后续的引用。
@@ -64,6 +71,7 @@
  *                  例如，如果基础选择器是 ".class"，修饰符列表是 ["a", "b", "c"]，且分隔符是 "--"，
  *                  那么将生成 ".class--a, .class--b, .class--c" 这些选择器。
  * @content 在调用此mixin时提供的内容，将被放置在生成的选择器内部。
+ * 如：@include m(primary, warning, info) 设置 .sp-button--primary, .sp-button--warning, .sp-button--info 的样式
  */
 @mixin m($modifier) {
   $selector: &; // 存储当前的作用域选择器
@@ -90,13 +98,24 @@
  * 定义动作状态。
  * @mixin when 一个用于根据状态动态生成样式的mixin。
  * @param $state 状态名称，将被用作选择器的一部分。
+ * @param $not 可选布尔参数，控制是否使用 :not 选择器。
  * @content mixin内的内容将被插入到生成的选择器中。
+ * 如：@include when(disabled) 设置 .is-disabled 的样式
+ * 如：@include when(disabled, true) 设置 :not(.is-disabled) 的样式
  */
-@mixin when($state) {
+@mixin when($state, $not: false) {
   @at-root {
-    // 生成一个带有状态前缀的选择器，并插入内容
-    &.#{$state-prefix + $state} {
-      @content;
+    // 如果 $not 为 true，则生成 :not 选择器
+    @if $not {
+      &:not(.#{$state-prefix + $state}) {
+        @content;
+      }
+    }
+    // 否则生成常规选择器
+    @else {
+      &.#{$state-prefix + $state} {
+        @content;
+      }
     }
   }
 }
