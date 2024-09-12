@@ -5,5 +5,17 @@ export const useButton = (props: ButtonProps, emit: ButtonEmits) => {
   const _disabled = computed(() => {
     return props.disabled || props.loading
   })
-  return { _disabled }
+
+  const handleClick = (evt: MouseEvent) => {
+    if (_disabled.value || props.loading) {
+      evt.stopPropagation()
+      return
+    }
+    // if (props.nativeType === 'reset') {
+    //   form?.resetFields()
+    // }
+    emit('click', evt)
+  }
+
+  return { _disabled, handleClick }
 }

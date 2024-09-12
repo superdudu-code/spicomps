@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClass">
+  <button :class="buttonClass" @click="handleClick">
     <slot />
   </button>
 </template>
@@ -18,7 +18,7 @@ const emit = defineEmits<{
   (e: 'click', values: MouseEvent): void
 }>()
 
-const { _disabled } = useButton(props, emit)
+const { _disabled, handleClick } = useButton(props, emit)
 const buttonClass = computed(() => [
   ns.b(),
   ns.m(props.type),
