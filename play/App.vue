@@ -2,30 +2,26 @@
   <!-- If you want to apply a custom namespace, uncomment the following and apply the css configuration in `vite.config.ts`. -->
   <!-- <el-config-provider namespace="ep"> -->
   <div class="play-container">
-    <SpConfig :theme="theme">
+    <SpConfigProvider :theme="theme">
       <sp-button type="primary" size="large">test</sp-button>
-    </SpConfig>
+    </SpConfigProvider>
   </div>
 </template>
 
 <script setup lang="ts">
-import SpButton from '@spicomps/base-components/button'
-import SpConfig from '@spicomps/base-components/config-provider'
+import { SpButton, SpConfigProvider } from '@spicomps/base-components'
 import { computed, ref } from 'vue'
 // code here
 
 const themeColor = ref('#409EFF')
 const theme = computed(() => {
   return {
-    common: {
+    colorTheme: {
       primaryColor: themeColor.value,
       // primaryColorSuppl: themeColor,
       // primaryColorHover: themeColor,
       // primaryColorPressed: themeColor
     },
-    // LoadingBar: {
-    //   colorLoading: appStore.themeColor
-    // }
   }
 })
 

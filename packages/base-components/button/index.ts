@@ -1,4 +1,9 @@
 import Button from './src/button.vue'
 
-import '@spicomps/theme-chalk/src/components/button.scss'
-export default Button
+Button.install = (app: any) => {
+  app.component(Button.name, Button)
+}
+
+export const SpButton = Button
+
+export default SpButton
