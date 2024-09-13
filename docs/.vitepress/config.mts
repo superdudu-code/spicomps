@@ -37,7 +37,10 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo_image.png',
     siteTitle: 'Spicomps',
-    outline: 3,
+    outline: {
+      level: [2, 6],
+      label: '锚点',
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav,
     sidebar,
