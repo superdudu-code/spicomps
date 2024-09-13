@@ -18,6 +18,7 @@
     "paths": {
       // 路径映射，相对于baseUrl
       "@spicomps/*": ["packages/*"]
-    }
+    },
+    "preserveSymlinks": true // 是否保留符号链接，默认：false
   }
 }

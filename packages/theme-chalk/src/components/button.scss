@@ -1,6 +1,5 @@
 @use 'sass:map';
-
-@use '../base.scss' as *;
+@use '../mixins/mixins.scss' as *;
 
 @include b(button) {
   @include set-component-css-var(

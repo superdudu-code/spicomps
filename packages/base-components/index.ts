@@ -6,8 +6,8 @@ export * from './config-provider'
 
 const Spicomps = {
   install(app: any) {
-    app.component('SpButton', Button)
-    app.component('SpConfigProvider', ConfigProvider)
+    app.component(Button.name, Button)
+    app.component(ConfigProvider.name, ConfigProvider)
   },
 }
 export default Spicomps

@@ -9,6 +9,10 @@ import { computed } from 'vue'
 import { useNamespace } from '@spicomps/hooks'
 import { useButton } from './use-button'
 import type { ButtonEmits, ButtonProps } from './types'
+
+defineOptions({
+  name: 'SpButton',
+})
 const ns = useNamespace('button')
 
 const props = withDefaults(defineProps<ButtonProps>(), {

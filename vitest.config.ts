@@ -1,14 +1,24 @@
-import { fileURLToPath } from 'node:url'
-import { configDefaults, defineConfig, mergeConfig } from 'vitest/config'
-import viteConfig from './vite.config'
+import { defineConfig } from 'vitest/config'
+import Vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
-export default mergeConfig(
-  viteConfig,
-  defineConfig({
-    test: {
-      environment: 'jsdom',
-      exclude: [...configDefaults.exclude, 'e2e/**'],
-      root: fileURLToPath(new URL('./', import.meta.url)),
+export default defineConfig({
+  plugins: [Vue(), vueJsx()],
+  test: {
+    globals: true,
+    clearMocks: true,
+    environment: 'jsdom',
+    reporters: ['default'],
+    testTransformMode: {
+      web: ['*.{ts,tsx}'],
     },
-  })
-)
+    coverage: {
+      reporter: ['text', 'json-summary', 'json'],
+      exclude: [
+        'play/**',
+        'packages/locale/lang/**',
+        'packages/components/*/style/**',
+      ],
+    },
+  },
+})
