@@ -27,7 +27,7 @@
 
       // large
       padding-vertical-large: 15px,
-      padding-horizontal-large: 38px,
+      padding-horizontal-large: 25px,
       height-large: 40px,
 
       // 字体大小
@@ -48,6 +48,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  gap: 4px;
 
   line-height: 1;
   text-align: center;

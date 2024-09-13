@@ -1,8 +1,12 @@
 <template>
   <button :class="buttonClass" @click="handleClick">
     <sp-icon v-if="loading" icon="spinner" spin />
-    <sp-icon v-else-if="icon" :icon="icon" />
-    <slot />
+    <!-- <sp-icon v-else-if="icon" :icon="icon" /> -->
+    <slot name="prefix" />
+    <div>
+      <slot />
+    </div>
+    <slot name="suffix" />
   </button>
 </template>
 
@@ -11,7 +15,7 @@ import { computed } from 'vue'
 import { useNamespace } from '@spicomps/hooks'
 import { SpIcon } from '@spicomps/base-components/icon'
 import { useButton } from './use-button'
-import type { ButtonEmits, ButtonProps } from './types'
+import type { ButtonProps } from './types'
 
 defineOptions({
   name: 'SpButton',
