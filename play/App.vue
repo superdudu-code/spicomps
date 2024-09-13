@@ -3,7 +3,10 @@
   <!-- <el-config-provider namespace="ep"> -->
   <div class="play-container">
     <SpConfigProvider :theme="theme">
-      <sp-button type="primary" size="large">test</sp-button>
+      <sp-button type="primary" size="large" round>large</sp-button>
+      <sp-button type="primary" size="default" round>default</sp-button>
+      <sp-button type="primary" >default</sp-button>
+      <sp-button type="primary" size="small" round>small</sp-button>
     </SpConfigProvider>
   </div>
 </template>
@@ -24,13 +27,6 @@ const theme = computed(() => {
     },
   }
 })
-
-setTimeout(() => {
-  themeColor.value = '#A848FF'
-}, 2000)
-setTimeout(() => {
-  themeColor.value = '#FFA848'
-}, 4000)
 </script>
 
 <style lang="scss">

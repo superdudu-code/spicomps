@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use '../mixins/mixins.scss' as *;
+
+@mixin button-round($size) {
+  @include when(round) {
+    $rounds: (
+      small: 20px,
+      default: 40px,
+      large: 50px,
+    );
+    border-radius: map-get($rounds, $size);
+  }
+}
