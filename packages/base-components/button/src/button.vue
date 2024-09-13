@@ -1,5 +1,7 @@
 <template>
   <button :class="buttonClass" @click="handleClick">
+    <sp-icon v-if="loading" icon="spinner" spin />
+    <sp-icon v-else-if="icon" :icon="icon" />
     <slot />
   </button>
 </template>
@@ -7,6 +9,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useNamespace } from '@spicomps/hooks'
+import { SpIcon } from '@spicomps/base-components/icon'
 import { useButton } from './use-button'
 import type { ButtonEmits, ButtonProps } from './types'
 
