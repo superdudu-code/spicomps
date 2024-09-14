@@ -38,6 +38,11 @@ description: 'Button'
 
 <preview path="../demos/button/size.vue" />
 
+## 图标按钮
+在按钮上使用图标，可以使用 `icon` 属性或 `icon` 插槽。
+
+<preview path="../demos/button/icon.vue" />
+
 
 ## API
 

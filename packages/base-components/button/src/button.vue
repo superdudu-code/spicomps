@@ -1,12 +1,11 @@
 <template>
   <button :class="buttonClass" @click="handleClick">
     <sp-icon v-if="loading" icon="spinner" spin />
-    <!-- <sp-icon v-else-if="icon" :icon="icon" /> -->
-    <slot name="prefix" />
+    <sp-icon v-else-if="icon" :icon="icon" />
     <div>
       <slot />
     </div>
-    <slot name="suffix" />
+    <slot name="icon" />
   </button>
 </template>
 

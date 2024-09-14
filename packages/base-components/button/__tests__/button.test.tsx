@@ -68,4 +68,22 @@ describe('Button', () => {
     ))
     expect(wrapper.classes()).toContain('is-round')
   })
+  //图标
+  test('图标', () => {
+    const wrapper = mount(() => (
+      <Button type="primary" icon="check">
+        你好
+      </Button>
+    ))
+    expect(wrapper.find('.sp-icon').exists()).toBe(true)
+    const wrapperSlot = mount(() => (
+      <Button type="primary" icon="check">
+        {{
+          default: () => <sp-icon icon="check" />,
+        }}
+        你好
+      </Button>
+    ))
+    expect(wrapperSlot.find('.sp-icon').exists()).toBe(true)
+  })
 })
