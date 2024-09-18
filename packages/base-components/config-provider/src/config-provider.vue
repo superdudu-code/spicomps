@@ -5,9 +5,13 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 import { useThemeChange } from '@spicomps/hooks/index'
-import type { ConfigProviderProps } from './type'
+import { configProviderProps } from './type'
 
-const props = defineProps<ConfigProviderProps>()
+defineOptions({
+  name: 'SpConfigProvider',
+})
+
+const props = defineProps(configProviderProps)
 
 const theme = computed(() => props.theme)
 

@@ -8,4 +8,4 @@ export const SpConfigProvider = ConfigProvider
 
 export * from './src/type'
 
-export default ConfigProvider
+export default SpConfigProvider
