@@ -2,13 +2,41 @@
   <!-- If you want to apply a custom namespace, uncomment the following and apply the css configuration in `vite.config.ts`. -->
   <!-- <el-config-provider namespace="ep"> -->
   <div class="play-container">
-    <sp-button>test</sp-button>
+    <SpConfigProvider :theme="theme">
+      <sp-button type="primary" size="large">test</sp-button>
+      <sp-button loading type="primary" size="large">test</sp-button>
+      <sp-button icon="check" type="primary" size="large">test</sp-button>
+    </SpConfigProvider>
+
+    <sp-icon icon="check" type="primary"></sp-icon>
   </div>
 </template>
 
 <script setup lang="ts">
-import SpButton from '@spicomps/base-components/button'
+import { computed, ref } from 'vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+library.add(faCheck)
 // code here
+
+const themeColor = ref('#409EFF')
+const theme = computed(() => {
+  return {
+    colorTheme: {
+      primaryColor: themeColor.value,
+      // primaryColorSuppl: themeColor,
+      // primaryColorHover: themeColor,
+      // primaryColorPressed: themeColor
+    },
+  }
+})
+
+setTimeout(() => {
+  themeColor.value = '#A848FF'
+}, 2000)
+setTimeout(() => {
+  themeColor.value = '#FFA848'
+}, 4000)
 </script>
 
 <style lang="scss">

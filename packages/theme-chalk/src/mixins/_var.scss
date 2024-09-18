@@ -1,16 +1,23 @@
-// src/mixins/_var.scss
-
 @use 'sass:map';
-@use 'function' as *;
 
+@use 'config';
+@use 'function' as *;
+@use '../common/var' as *;
+
+/**
+ * 设置css的变量相关的方法
+ */
+
+// 设置css的变量值
+// for example:
 // @include set-css-var-value(('color', 'primary'), red);
-// --sp-color-primary: red;
+// --el-color-primary: red;
 @mixin set-css-var-value($name, $value) {
   #{joinVarName($name)}: #{$value};
 }
 
 // @include set-css-var-type('color', 'primary', $map);
-// --sp-color-primary: #{map.get($map, 'primary')};
+// --el-color-primary: #{map.get($map, 'primary')};
 @mixin set-css-var-type($name, $type, $variables) {
   #{getCssVarName($name, $type)}: #{map.get($variables, $type)};
 }
@@ -31,20 +38,33 @@
   );
 }
 
-/**
- * 设置分组的CSS变量
- * @param $name - 分组名称，用于生成CSS变量名。
- * @param $variables - 一个映射表，包含要设置的变量名和其值。
- * 该mixin遍历$variables映射表，为每个键值对生成相应的CSS变量。如果键是"default"，
- * 则设置基础的CSS变量；否则，设置带有特定后缀的CSS变量。
- */
+// 设置组件的css变量
 @mixin set-component-css-var($name, $variables) {
   @each $attribute, $value in $variables {
-    // 根据$attribute的值决定是设置基本变量还是特定属性的变量
     @if $attribute == 'default' {
-      #{getCssVarName($name)}: #{$value}; // 设置默认的CSS变量
+      #{getCssVarName($name)}: #{$value};
     } @else {
-      #{getCssVarName($name, $attribute)}: #{$value}; // 设置具有特定后缀的CSS变量
+      #{getCssVarName($name, $attribute)}: #{$value};
     }
   }
+}
+
+@mixin set-css-color-rgb($type) {
+  $color: map.get($colors, $type, 'base');
+  @include set-css-var-value(
+    ('color', $type, 'rgb'),
+    #{red($color),
+    green($color),
+    blue($color)}
+  );
+}
+
+// generate css var from existing css var
+// for example:
+// @include css-var-from-global(('button', 'text-color'), ('color', $type))
+// --el-button-text-color: var(--el-color-#{$type});
+@mixin css-var-from-global($var, $gVar) {
+  $varName: joinVarName($var);
+  $gVarName: joinVarName($gVar);
+  #{$varName}: var(#{$gVarName});
 }

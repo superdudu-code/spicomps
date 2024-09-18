@@ -233,7 +233,12 @@ module.exports = defineConfig({
     ],
 
     // Prettier 规则
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
 
     // Import 规则
     'import/first': 'error',
