@@ -4,13 +4,19 @@
   <div class="play-container">
     <SpConfigProvider :theme="theme">
       <sp-button type="primary" size="large">test</sp-button>
+      <sp-button loading type="primary" size="large">test</sp-button>
+      <sp-button icon="check" type="primary" size="large">test</sp-button>
     </SpConfigProvider>
+
+    <sp-icon icon="check" type="primary"></sp-icon>
   </div>
 </template>
 
 <script setup lang="ts">
-import { SpButton, SpConfigProvider } from '@spicomps/base-components'
 import { computed, ref } from 'vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+library.add(faCheck)
 // code here
 
 const themeColor = ref('#409EFF')
