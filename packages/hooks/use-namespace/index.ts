@@ -83,7 +83,7 @@ export const useNamespace = (block: string) => {
       ? _bem(unref(namespace), block, blockSuffix, element, modifier)
       : ''
 
-  // 创建动作状态类名，支持两种调用方式
+  // 创建动作状态类名，支持两种调用方式 is-success
   const is: {
     (name: string, state: boolean | undefined): string
     (name: string): string

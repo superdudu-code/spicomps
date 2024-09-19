@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 import { useThemeChange } from '@spicomps/hooks/index'
-import { configProviderProps } from './type'
+import { configProviderProps } from './types'
 
 defineOptions({
   name: 'SpConfigProvider',

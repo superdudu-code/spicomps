@@ -1,6 +1,8 @@
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import type { ExtractPropTypes, PropType } from 'vue'
 
+import type Icon from './icon.vue'
+
 export type IconType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 
 type icon = PropType<object | Array<string> | string | IconDefinition>
@@ -52,3 +54,5 @@ export const iconProps = {
 
 // 使用 ExtractPropTypes 提取类型
 export type IconProps = ExtractPropTypes<typeof iconProps>
+
+export type IconInstance = InstanceType<typeof Icon>

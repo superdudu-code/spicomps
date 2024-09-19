@@ -3,4 +3,6 @@ $common-separator: '-' !default; // 公共的连接符
 $element-separator: '__' !default; // 元素以__分割，如 sp-input__inner
 $modifier-separator: '--' !default; // 修饰符以--分割，如 sp-input--mini
 $state-prefix: 'is-' !default; // 状态以is-开头，如 is-disabled
-// 在 SCSS 中，使用 $+ 变量名：变量 来定义一个变量。在变量后加入 !default 表示默认值。给一个未通过 !default 声明赋值的变量赋值，此时，如果变量已经被赋值，不会再被重新赋值；但是如果变量还没有被赋值，则会被赋予新的值。
+// 在 SCSS 中，使用 $+ 变量名：变量 来定义一个变量。
+// 在变量后加入 !default 表示默认值。
+// 给一个未通过 !default 声明赋值的变量赋值，此时，如果变量已经被赋值，不会再被重新赋值；但是如果变量还没有被赋值，则会被赋予新的值。
