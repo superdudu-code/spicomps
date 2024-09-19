@@ -71,7 +71,7 @@
 /*
  * 判断父级选择器是否包含`--` `.is-` `:`这三种字符
  * @param {String} $selector 选择器
- * @return {String} 如果父级选择器包含以上三种字符中的任意一种，返回true；否则返回false
+ * @return {Boolean} 如果父级选择器包含以上三种字符中的任意一种，返回true；否则返回false
 */
 @function hitAllSpecialNestRule($selector) {
   @return containsModifier($selector) or containWhenFlag($selector) or

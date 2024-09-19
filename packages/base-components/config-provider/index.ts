@@ -1,11 +1,7 @@
+import { withInstall } from '@spicomps/utils'
 import ConfigProvider from './src/config-provider.vue'
 
-ConfigProvider.install = (app: any) => {
-  app.component(ConfigProvider.name, ConfigProvider)
-}
-
-export const SpConfigProvider = ConfigProvider
-
-export * from './src/type'
+export const SpConfigProvider = withInstall(ConfigProvider)
+export * from './src/types'
 
 export default SpConfigProvider
