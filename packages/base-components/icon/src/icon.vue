@@ -10,7 +10,7 @@
 import { computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { useNamespace } from '@spicomps/hooks'
-import type { IconProps } from './type'
+import { iconProps } from './type'
 import type { CSSProperties } from 'vue'
 
 defineOptions({
@@ -20,7 +20,7 @@ defineOptions({
 
 const ns = useNamespace('icon')
 
-const props = defineProps<IconProps>()
+const props = defineProps(iconProps)
 
 const iconClass = computed(() => [ns.b(), ns.m(props.type)])
 
@@ -33,7 +33,7 @@ const customStyles = computed(() => {
 })
 
 const fontProps = computed(() => {
-  const obj = { ...props }
+  const obj = { ...props, icon: props.icon || '' }
   delete obj.type
   delete obj.color
   return obj

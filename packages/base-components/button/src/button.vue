@@ -14,18 +14,16 @@ import { computed } from 'vue'
 import { useNamespace } from '@spicomps/hooks'
 import { SpIcon } from '@spicomps/base-components/icon'
 import { useButton } from './use-button'
-import type { ButtonProps } from './types'
+import { buttonProps } from './types'
 
 defineOptions({
   name: 'SpButton',
 })
 const ns = useNamespace('button')
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  nativeType: 'button',
-})
+const props = defineProps(buttonProps)
 const emit = defineEmits<{
-  (e: 'click', values: MouseEvent): void
+  click: [value: MouseEvent]
 }>()
 
 const { _disabled, handleClick } = useButton(props, emit)
