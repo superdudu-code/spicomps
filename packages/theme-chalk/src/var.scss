@@ -28,6 +28,8 @@
   @include set-component-css-var('bg-color', $bg-color);
 
   // foot
+  @include set-component-css-var('font-size', $font-size);
+  @include set-component-css-var('font-family', $font-family);
   @include set-css-var-value('font-weight-primary', 500);
   @include set-css-var-value('font-line-height-primary', 24px);
 
@@ -42,4 +44,6 @@
   );
 
   @include set-component-css-var('border-radius', $border-radius);
+
+  @include set-component-css-var('component-size', $common-component-size);
 }

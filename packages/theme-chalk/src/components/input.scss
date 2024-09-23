@@ -1,0 +1,70 @@
+@use 'sass:map';
+@use '../mixins/mixins.scss' as *;
+@use '../mixins/button' as *;
+@use '../common//var.scss' as *;
+
+$input: () !default;
+$input: map.merge(
+  (
+    'bg-color': getCssVar('fill-color', 'blank'),
+    'width': 100%,
+    'border-color': getCssVar('border-color'),
+    'border-radius': getCssVar('border-radius', 'base'),
+    'text-color': getCssVar('text-color', 'regular'),
+    'inner-height': calc(getCssVar('component-size') - 2 * $border-width),
+  ),
+  $input
+);
+
+$input-padding-horizontal: () !default;
+$input-padding-horizontal: map.merge(
+  (
+    'large': 16px,
+    'default': 12px,
+    'small': 8px,
+  ),
+  $input-padding-horizontal
+);
+
+@include b(input) {
+  @include set-component-css-var(input, $input);
+}
+@include b(input) {
+  position: relative;
+  font-size: getCssVar('font-size', 'base');
+  display: inline-flex;
+  width: getCssVar('input', 'width');
+  line-height: getCssVar('component-size');
+  box-sizing: border-box;
+  vertical-align: middle;
+
+  @include e(wrapper) {
+    display: inline-flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    padding: $border-width map.get($input-padding-horizontal, 'default')-$border-width;
+    background-color: getCssVar('input', 'bg-color');
+    border-radius: getCssVar('input', 'border-radius');
+    box-shadow: 0 0 0 1px getCssVar('input', 'border-color') inset;
+  }
+
+  @include e(inner) {
+    width: 100%;
+    flex-grow: 1;
+    -webkit-appearance: none;
+    color: getCssVar('input', 'text-color');
+    font-size: inherit;
+    height: getCssVar('input-inner-height');
+    line-height: getCssVar('input-inner-height');
+    padding: 0;
+    outline: none;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

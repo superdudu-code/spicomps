@@ -169,3 +169,27 @@ $border-radius: map.merge(
   ),
   $border-radius
 );
+
+// Typography
+$font-family: () !default;
+$font-family: map.merge(
+  (
+    // default family
+    '':
+      "'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif"
+  ),
+  $font-family
+);
+
+$font-size: () !default;
+$font-size: map.merge(
+  (
+    'extra-large': 20px,
+    'large': 18px,
+    'medium': 16px,
+    'base': 14px,
+    'small': 13px,
+    'extra-small': 12px,
+  ),
+  $font-size
+);
