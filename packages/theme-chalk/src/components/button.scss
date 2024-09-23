@@ -2,46 +2,48 @@
 @use '../mixins/mixins.scss' as *;
 @use '../mixins/button' as *;
 
+$button: () !default;
+$button: map.merge(
+  (
+    'bg-color': getCssVar('fill-color', 'blank'),
+    'text-color': getCssVar('text-color', 'regular'),
+    'border-color': getCssVar('border-color'),
+    // hover样式
+    'text-color-hover': getCssVar('color-primary'),
+    'border-color-hover': getCssVar('color-primary', 'light-7'),
+    // active样式
+    'text-color-active': getCssVar('color-primary'),
+    'border-color-active': getCssVar('color-primary'),
+    // disabled样式
+    'bg-color-disabled': getCssVar('fill-color', 'blank'),
+    'text-color-disabled': getCssVar('text-color', 'disabled'),
+    'border-color-disabled': getCssVar('border-color-light'),
+    padding-vertical: 8px,
+    padding-horizontal: 15px,
+    // small
+    padding-vertical-small: 5px,
+    padding-horizontal-small: 10px,
+    height-small: 20px,
+    // large
+    padding-vertical-large: 15px,
+    padding-horizontal-large: 25px,
+    height-large: 40px,
+
+    // 字体大小
+    // small
+    font-size-small: 12px,
+    // large
+    font-size-large: 15px,
+
+    border-radius-base: getCssVar('border-radius', 'base'),
+    box-shadow: none,
+    box-shadow-hover: none,
+  ),
+  $button
+);
+
 @include b(button) {
-  @include set-component-css-var(
-    button,
-    (
-      bg-color: #fff,
-      bg-color-disabled: getCssVar('fill-color-blank'),
-      border-color: getCssVar('border-color'),
-      border-color-hover: getCssVar('color-primary'),
-      border-color-active: getCssVar('color-primary'),
-      border-color-disabled: getCssVar('border-color-link'),
-      text-color: getCssVar('text-color-regular'),
-      text-color-hover: getCssVar('color-primary'),
-      text-color-text: getCssVar('color-primary'),
-      text-color-active: getCssVar('color-primary'),
-      text-color-disabled: getCssVar('text-color-disabled'),
-      // default
-      padding-vertical: 8px,
-      padding-horizontal: 15px,
-      // small
-      padding-vertical-small: 5px,
-      padding-horizontal-small: 10px,
-      height-small: 20px,
-
-      // large
-      padding-vertical-large: 15px,
-      padding-horizontal-large: 25px,
-      height-large: 40px,
-
-      // 字体大小
-      // small
-      font-size-small: 12px,
-      // large
-      font-size-large: 15px,
-
-      border-radius-base: 4px,
-
-      box-shadow: none,
-      box-shadow-hover: none,
-    )
-  );
+  @include set-component-css-var(button, $button);
 }
 
 @include b(button) {
@@ -91,10 +93,20 @@
   @include when(text) {
     background-color: transparent;
     border: none;
-    padding: 0;
-    color: getCssVar('button', 'text-color-text');
-    &:hover {
-      color: getCssVar('button', 'bg-color-hover');
+    color: getCssVar('button', 'text-color');
+
+    @include when(disabled) {
+      color: getCssVar('button', 'disabled', 'text-color');
+      background-color: transparent !important;
+    }
+
+    @include when(disabled, true) {
+      &:hover {
+        background-color: getCssVar('fill-color', 'light');
+      }
+      &:active {
+        background-color: getCssVar('fill-color');
+      }
     }
   }
 
@@ -114,51 +126,7 @@
   @each $type in (primary, success, warning, danger, info) {
     // .sp-button--primary ...
     @include m($type) {
-      @include css-var-from-global(('button', 'text-color'), ('color', white));
-      @include css-var-from-global(('button', 'bg-color'), ('color', $type));
-      @include css-var-from-global(
-        ('button', 'border-color'),
-        ('color', $type)
-      );
-      // hover
-      @include css-var-from-global(
-        ('button', 'text-color-hover'),
-        ('color', white)
-      );
-      @include css-var-from-global(
-        ('button', 'bg-color-hover'),
-        ('color', $type, 'light-3')
-      );
-      @include css-var-from-global(
-        ('button', 'border-color-hover'),
-        ('color', $type, 'light-3')
-      );
-      // active
-      @include css-var-from-global(
-        ('button', 'text-color-active'),
-        ('color', white)
-      );
-      @include css-var-from-global(
-        ('button', 'bg-color-active'),
-        ('color', $type, 'dark-2')
-      );
-      @include css-var-from-global(
-        ('button', 'border-color-active'),
-        ('color', $type, 'dark-2')
-      );
-      // disabled
-      @include css-var-from-global(
-        ('button', 'text-color-disabled'),
-        ('color', white)
-      );
-      @include css-var-from-global(
-        ('button', 'bg-color-disabled'),
-        ('color', $type, 'light-5')
-      );
-      @include css-var-from-global(
-        ('button', 'border-color-disabled'),
-        ('color', $type, 'light-5')
-      );
+      @include button-variant($type);
     }
   }
 
