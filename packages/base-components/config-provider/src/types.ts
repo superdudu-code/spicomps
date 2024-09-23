@@ -1,3 +1,5 @@
+import type { ExtractPropTypes, PropType } from 'vue'
+
 // 颜色
 export interface ConfigProviderColorTheme {
   primaryColor?: string
@@ -12,6 +14,7 @@ export interface ConfigProviderTheme {
   colorTheme?: ConfigProviderColorTheme
 }
 
-export interface ConfigProviderProps {
-  theme?: ConfigProviderTheme
-}
+export const configProviderProps = {
+  theme: Object as PropType<ConfigProviderTheme>,
+} as const
+export type ConfigProviderProps = ExtractPropTypes<typeof configProviderProps>

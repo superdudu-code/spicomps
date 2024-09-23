@@ -10,9 +10,10 @@
     "internal/**/*",
     "internal/**/*.json",
     "scripts/**/*",
-    "packages/theme-chalk/*"
+    "packages/theme-chalk/*",
     // "packages/element-plus/version.ts",
-    // "packages/element-plus/package.json"
+    "packages/spicomps/package.json",
+    "packages/**/*.vue"
   ],
   "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
 }

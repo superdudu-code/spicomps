@@ -1,9 +1,7 @@
+import { withInstall } from '@spicomps/utils'
 import Button from './src/button.vue'
 
-Button.install = (app: any) => {
-  app.component(Button.name, Button)
-}
-
-export const SpButton = Button
+export const SpButton = withInstall(Button)
+export * from './src/types'
 
 export default SpButton

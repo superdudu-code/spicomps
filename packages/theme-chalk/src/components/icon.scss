@@ -13,8 +13,11 @@
   fill: currentColor;
   color: var(--color);
   font-size: inherit;
-  width: 1em;
-  height: 1em;
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
 
   // 设置不同类型的颜色
   @each $type in (primary, success, warning, danger, info) {

@@ -1,16 +1,35 @@
 import DefaultTheme from 'vitepress/theme'
 import { ElementPlusContainer } from '@vitepress-demo-preview/component'
 import '@vitepress-demo-preview/component/dist/style.css'
-import Spicomps from '@spicomps/base-components'
+import { SpButton, SpConfigProvider, SpIcon } from '@spicomps/base-components'
 import type { EnhanceAppContext } from 'vitepress'
-import '@spicomps/theme-chalk/src/base.scss'
+
+import '@spicomps/theme-chalk/src/index.scss'
 
 import './custom.css'
+
+// 组件库
+const components = [SpIcon, SpButton, SpConfigProvider]
+// 是否已安装标识
+const INSTALLED_KEY = Symbol('INSTALLED_KEY')
+// 组件库插件
+const Spicomps = {
+  install(app: any) {
+    // 如果该组件库已经安装过了，则不进行安装
+    if (app[INSTALLED_KEY]) return
+    // 将标识值设置为 true，表示已经安装了
+    app[INSTALLED_KEY] = true
+    // 循环组件库中的每个组件进行安装
+    components.forEach((c) => app.use(c))
+  },
+}
 
 export default {
   ...DefaultTheme,
   enhanceApp(ctx: EnhanceAppContext) {
-    ctx.app.use(Spicomps)
+    ctx.app.component(SpButton.name!, SpButton)
+    ctx.app.component(SpConfigProvider.name!, SpConfigProvider)
+    ctx.app.component(SpIcon.name!, SpIcon)
     ctx.app.component('demo-preview', ElementPlusContainer)
   },
 }

@@ -24,6 +24,9 @@ $colors: map.deep-merge(
     'danger': (
       'base': #f56c6c,
     ),
+    'error': (
+      'base': #f56c6c,
+    ),
     'info': (
       'base': #909399,
     )
@@ -40,6 +43,7 @@ $color-primary: map.get($colors, 'primary', 'base') !default; // 主要颜色
 $color-success: map.get($colors, 'success', 'base') !default; // 成功状态颜色
 $color-warning: map.get($colors, 'warning', 'base') !default; // 警告状态颜色
 $color-danger: map.get($colors, 'danger', 'base') !default; // 错误状态颜色
+$color-error: map.get($colors, 'error', 'base') !default;
 $color-info: map.get($colors, 'info', 'base') !default; // 信息状态颜色
 
 // 定义可用的主题类型

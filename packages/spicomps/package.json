@@ -1,0 +1,17 @@
+{
+  "name": "spicomps",
+  "version": "0.0.1-dev.1",
+  "description": "一个特殊的vue3组件库",
+  "license": "MIT",
+  "main": "lib/index.cjs",
+  "module": "es/index.mjs",
+  "peerDependencies": {
+    "vue": "^3.4.29"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/vue-fontawesome": "^3.0.8"
+  },
+  "devDependencies": {}
+}

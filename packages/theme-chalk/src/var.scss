@@ -40,4 +40,6 @@
     getCssVar('border-width') getCssVar('border-style')
       getCssVar('border-color')
   );
+
+  @include set-component-css-var('border-radius', $border-radius);
 }

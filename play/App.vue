@@ -2,15 +2,26 @@
   <!-- If you want to apply a custom namespace, uncomment the following and apply the css configuration in `vite.config.ts`. -->
   <!-- <el-config-provider namespace="ep"> -->
   <div class="play-container">
-    <SpConfigProvider :theme="theme">
-      <sp-button type="primary" size="large">test</sp-button>
-    </SpConfigProvider>
+    <sp-button type="primary" size="large" round>large</sp-button>
+    <sp-button type="primary" size="default" round>default</sp-button>
+    <sp-button type="primary">default</sp-button>
+    <sp-button type="primary" size="small" round>small</sp-button>
+    <sp-button type="primary" size="large">test</sp-button>
+    <sp-button loading type="primary" size="large">test</sp-button>
+    <sp-button icon="check" type="primary">test</sp-button>
+
+    <sp-icon icon="check" type="primary"></sp-icon>
   </div>
 </template>
 
 <script setup lang="ts">
-import { SpButton, SpConfigProvider } from '@spicomps/base-components'
 import { computed, ref } from 'vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { ButtonInstance } from '@spicomps/base-components'
+library.add(faCheck)
+
+import { SpButton } from '@spicomps/base-components'
 // code here
 
 const themeColor = ref('#409EFF')
@@ -24,13 +35,6 @@ const theme = computed(() => {
     },
   }
 })
-
-setTimeout(() => {
-  themeColor.value = '#A848FF'
-}, 2000)
-setTimeout(() => {
-  themeColor.value = '#FFA848'
-}, 4000)
 </script>
 
 <style lang="scss">

@@ -1,18 +1,13 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-
-// import Spicomps from 'spicomps'
-import {
-  SpButton,
-  SpIcon,
-  SpConfigProvider,
-} from '@spicomps/base-components/index'
-import '@spicomps/theme-chalk/src/index.scss'
+import SpButton from '@spicomps/base-components/button'
+import SpConfigProvider from '@spicomps/base-components/config-provider'
+import SpIcon from '@spicomps/base-components/icon'
 
 // 组件库
-const components = [SpIcon, SpButton, SpConfigProvider]
+const components = [SpButton, SpConfigProvider, SpIcon]
+
 // 是否已安装标识
 const INSTALLED_KEY = Symbol('INSTALLED_KEY')
+
 // 组件库插件
 const Spicomps = {
   install(app: any) {
@@ -25,9 +20,4 @@ const Spicomps = {
   },
 }
 
-//创建vue实例
-const app = createApp(App)
-// 安装组件库
-// app.use(Spicomps)
-//挂载实例
-app.mount('#play')
+export default Spicomps
