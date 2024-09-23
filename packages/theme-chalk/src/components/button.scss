@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use '../mixins/mixins.scss' as *;
+@use '../mixins/button' as *;
 
 @include b(button) {
   @include set-component-css-var(
@@ -13,10 +14,27 @@
       border-color-disabled: getCssVar('border-color-link'),
       text-color: getCssVar('text-color-regular'),
       text-color-hover: getCssVar('color-primary'),
+      text-color-text: getCssVar('color-primary'),
       text-color-active: getCssVar('color-primary'),
       text-color-disabled: getCssVar('text-color-disabled'),
+      // default
       padding-vertical: 8px,
       padding-horizontal: 15px,
+      // small
+      padding-vertical-small: 5px,
+      padding-horizontal-small: 10px,
+      height-small: 20px,
+
+      // large
+      padding-vertical-large: 15px,
+      padding-horizontal-large: 25px,
+      height-large: 40px,
+
+      // 字体大小
+      // small
+      font-size-small: 12px,
+      // large
+      font-size-large: 15px,
 
       border-radius-base: 4px,
 
@@ -30,6 +48,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  gap: 4px;
 
   line-height: 1;
   text-align: center;
@@ -66,6 +85,28 @@
       background-image: none;
       background-color: getCssVar('button', 'bg-color', 'disabled');
       border-color: getCssVar('button', 'border-color', 'disabled');
+    }
+  }
+
+  @include when(text) {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: getCssVar('button', 'text-color-text');
+    &:hover {
+      color: getCssVar('button', 'bg-color-hover');
+    }
+  }
+
+  @each $size in (large, default, small) {
+    @include button-round($size);
+    @include m($size) {
+      line-height: 1;
+      @if $size != 'default' {
+        padding: 0 getCssVar('button', 'padding-horizontal-' + $size);
+        font-size: getCssVar('button', 'font-size-' + $size);
+        height: getCssVar('button', 'height-' + $size);
+      }
     }
   }
 

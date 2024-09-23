@@ -2,7 +2,10 @@
   <button :class="buttonClass" @click="handleClick">
     <sp-icon v-if="loading" icon="spinner" spin />
     <sp-icon v-else-if="icon" :icon="icon" />
-    <slot />
+    <div>
+      <slot />
+    </div>
+    <slot name="icon" />
   </button>
 </template>
 

@@ -28,6 +28,6 @@ const Spicomps = {
 //创建vue实例
 const app = createApp(App)
 // 安装组件库
-app.use(Spicomps)
+// app.use(Spicomps)
 //挂载实例
 app.mount('#play')

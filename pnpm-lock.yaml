@@ -152,9 +152,6 @@ importers:
       '@esbuild-kit/cjs-loader':
         specifier: ^2.4.4
         version: 2.4.4
-      '@esbuild-kit/esm-loader':
-        specifier: ^2.6.5
-        version: 2.6.5
       '@rollup/plugin-node-resolve':
         specifier: ^15.2.3
         version: 15.2.3(rollup@4.21.3)
@@ -947,13 +944,6 @@ packages:
     dependencies:
       esbuild: 0.18.20
       source-map-support: 0.5.21
-    dev: true
-
-  /@esbuild-kit/esm-loader@2.6.5:
-    resolution: {integrity: sha512-FxEMIkJKnodyA1OaCUoEvbYRkoZlLZ4d/eXFu9Fh8CbBBgP5EmZxrfTRyN0qpXZ4vOvqnE5YdRdcrmUUXuU+dA==}
-    dependencies:
-      '@esbuild-kit/core-utils': 3.3.2
-      get-tsconfig: 4.8.0
     dev: true
 
   /@esbuild/aix-ppc64@0.21.5:
@@ -4742,7 +4732,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
     requiresBuild: true
     dependencies:
       bindings: 1.5.0

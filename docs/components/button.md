@@ -25,6 +25,25 @@ description: 'Button'
 
 <preview path="../demos/button/text.vue" />
 
+## 圆角按钮
+
+使用 `round: true` 设置按钮为链接按钮
+
+<preview path="../demos/button/round.vue" />
+
+## 调整尺寸
+除了默认的大小，按钮组件还提供了几种额外的尺寸可供选择，以便适配不同的场景。
+
+使用 `size` 属性额外配置尺寸，可使用 `large`和`small`两种值。
+
+<preview path="../demos/button/size.vue" />
+
+## 图标按钮
+在按钮上使用图标，可以使用 `icon` 属性或 `icon` 插槽。
+
+<preview path="../demos/button/icon.vue" />
+
+
 ## API
 
 | Name        | Description                            | Type                                                    | Default   |

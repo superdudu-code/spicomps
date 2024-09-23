@@ -18,4 +18,72 @@ describe('Button', () => {
     wrapper.get('button').trigger('click')
     expect(wrapper.emitted()).toHaveProperty('click')
   })
+  test('禁用状态', () => {
+    const wrapper = mount(() => (
+      <Button type="primary" disabled>
+        你好
+      </Button>
+    ))
+    expect(wrapper.classes()).toContain('is-disabled')
+  })
+  test('按钮尺寸-small', () => {
+    const wrapper = mount(() => (
+      <Button type="primary" size="small">
+        你好
+      </Button>
+    ))
+    expect(wrapper.classes()).toContain('sp-button--small')
+  })
+  test('按钮尺寸-default', () => {
+    const wrapper = mount(() => (
+      <Button type="primary" size="default">
+        你好
+      </Button>
+    ))
+    expect(wrapper.classes()).toContain('sp-button--default')
+  })
+  test('按钮尺寸-large', () => {
+    const wrapper = mount(() => (
+      <Button type="primary" size="large">
+        你好
+      </Button>
+    ))
+    expect(wrapper.classes()).toContain('sp-button--large')
+  })
+  // 加载状态
+  test('加载状态', () => {
+    const wrapper = mount(() => (
+      <Button type="primary" loading>
+        你好
+      </Button>
+    ))
+    expect(wrapper.classes()).toContain('is-loading')
+  })
+  // 圆角按钮
+  test('圆角按钮', () => {
+    const wrapper = mount(() => (
+      <Button type="primary" round>
+        你好
+      </Button>
+    ))
+    expect(wrapper.classes()).toContain('is-round')
+  })
+  //图标
+  test('图标', () => {
+    const wrapper = mount(() => (
+      <Button type="primary" icon="check">
+        你好
+      </Button>
+    ))
+    expect(wrapper.find('.sp-icon').exists()).toBe(true)
+    const wrapperSlot = mount(() => (
+      <Button type="primary" icon="check">
+        {{
+          default: () => <sp-icon icon="check" />,
+        }}
+        你好
+      </Button>
+    ))
+    expect(wrapperSlot.find('.sp-icon').exists()).toBe(true)
+  })
 })
