@@ -27,8 +27,10 @@ export const buttonProps = {
   },
   autofocus: Boolean,
   loading: Boolean,
-  icon: String,
   text: Boolean,
+
+  preIcon: String, // 前置icon
+  sufIcon: String, // 后置icon
 } as const
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>
 

@@ -1,17 +1,32 @@
 <template>
   <div class="demo-container">
-    <sp-button type="primary" size="large" round>
-      后置图标
-      <template #icon>
+    <span>属性：</span>
+    <sp-button type="primary" pre-icon="check">前置图标</sp-button>
+    <sp-button type="primary" suf-icon="check">后置图标</sp-button>
+    <sp-button type="primary" pre-icon="check" suf-icon="check">
+      前后置图标
+    </sp-button>
+  </div>
+  <div class="demo-container">
+    <span>插槽：</span>
+    <sp-button type="primary">
+      前置图标
+      <template #preIcon>
         <sp-icon icon="check" />
       </template>
     </sp-button>
-    <sp-button type="primary" size="large" round icon="check">
-      前置图标
+    <sp-button type="primary">
+      后置图标
+      <template #sufIcon>
+        <sp-icon icon="check" />
+      </template>
     </sp-button>
-    <sp-button type="primary" size="large" round icon="check">
+    <sp-button type="primary">
+      <template #preIcon>
+        <sp-icon icon="check" />
+      </template>
       前后置图标
-      <template #icon>
+      <template #sufIcon>
         <sp-icon icon="check" />
       </template>
     </sp-button>

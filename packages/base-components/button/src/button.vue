@@ -8,11 +8,15 @@
     @click="handleClick"
   >
     <sp-icon v-if="loading" icon="spinner" spin />
-    <sp-icon v-else-if="icon" :icon="icon" />
-    <div>
+    <slot v-else-if="$slots.preIcon || preIcon" name="preIcon">
+      <sp-icon :icon="preIcon" />
+    </slot>
+    <span :class="ns.e('content')">
       <slot />
-    </div>
-    <slot name="icon" />
+    </span>
+    <slot v-if="$slots.sufIcon || sufIcon" name="sufIcon">
+      <sp-icon :icon="sufIcon" />
+    </slot>
   </button>
 </template>
 
