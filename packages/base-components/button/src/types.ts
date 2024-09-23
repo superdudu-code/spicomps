@@ -2,10 +2,17 @@ import type { ComponentSize } from '@spicomps/constants'
 import type { ExtractPropTypes, PropType } from 'vue'
 import type SpButton from './button.vue'
 
-export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
+export type ButtonType =
+  | ''
+  | 'default'
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'info'
 
 // button原生属性
-export type nativeType = 'submit' | 'reset' | 'button'
+export type ButtonNativeType = 'submit' | 'reset' | 'button'
 
 export const buttonProps = {
   type: String as PropType<ButtonType>,
@@ -15,7 +22,7 @@ export const buttonProps = {
   circle: Boolean,
   disabled: Boolean,
   nativeType: {
-    type: String as PropType<nativeType>,
+    type: String as PropType<ButtonNativeType>,
     default: 'button',
   },
   autofocus: Boolean,
@@ -25,8 +32,8 @@ export const buttonProps = {
 } as const
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>
 
-export interface ButtonEmits {
-  (e: 'click', values: MouseEvent): void
+export const buttonEmits = {
+  click: (evt: MouseEvent) => evt instanceof MouseEvent,
 }
 
 export type ButtonInstance = InstanceType<typeof SpButton>
