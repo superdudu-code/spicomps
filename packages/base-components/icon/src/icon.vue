@@ -10,7 +10,7 @@
 import { computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { useNamespace } from '@spicomps/hooks'
-import { iconProps } from './type'
+import { iconProps } from './types'
 import type { CSSProperties } from 'vue'
 
 defineOptions({

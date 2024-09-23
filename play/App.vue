@@ -9,6 +9,11 @@
     <sp-button type="primary" size="large">test</sp-button>
     <sp-button loading type="primary" size="large">test</sp-button>
     <sp-button icon="check" type="primary">test</sp-button>
+    <SpConfigProvider :theme="theme">
+      <sp-button type="primary">test</sp-button>
+      <sp-button loading type="primary" size="large">test</sp-button>
+      <sp-button icon="check" type="primary" size="large">test</sp-button>
+    </SpConfigProvider>
 
     <sp-icon icon="check" type="primary"></sp-icon>
   </div>
