@@ -51,7 +51,8 @@
     "@spicomps/constants": "workspace:^",
     "@spicomps/hooks": "workspace:^",
     "@spicomps/theme-chalk": "workspace:^",
-    "@spicomps/utils": "workspace:^"
+    "@spicomps/utils": "workspace:^",
+    "@vueuse/core": "^11.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",

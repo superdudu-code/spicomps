@@ -1,5 +1,5 @@
 import type { ComponentSize } from '@spicomps/constants'
-import type { ExtractPropTypes, PropType } from 'vue'
+import type { EmitFn, ExtractPropTypes, PropType } from 'vue'
 import type SpButton from './button.vue'
 
 export type ButtonType =
@@ -37,5 +37,6 @@ export type ButtonProps = ExtractPropTypes<typeof buttonProps>
 export const buttonEmits = {
   click: (evt: MouseEvent) => evt instanceof MouseEvent,
 }
+export type ButtonEmits = EmitFn<typeof buttonEmits>
 
 export type ButtonInstance = InstanceType<typeof SpButton>

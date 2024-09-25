@@ -47,19 +47,39 @@ const _bem = (
 export const useNamespace = (block: string) => {
   // 基于Vue的computed创建动态命名空间
   const namespace = computed(() => defaultNamespace)
-  // 创建块级类名 sp-form
+
+  /**
+   * 创建块级类名
+   * @param blockSuffix
+   * @returns sp-form
+   */
   const b = (blockSuffix = '') =>
     _bem(unref(namespace), block, blockSuffix, '', '')
 
-  // 创建元素级类名 sp-input__inner
+  /**
+   * 创建元素级类名
+   * @example e('inner')
+   * @param element 子元素块名：inner
+   * @returns sp-input__inner
+   */
   const e = (element?: string) =>
     element ? _bem(unref(namespace), block, '', element, '') : ''
 
-  // 创建修改器类名 sp-form--default
+  /**
+   * 创建修改器类名
+   * @example m('default')
+   * @param modifier 修饰名：default
+   * @returns sp-form--default
+   */
   const m = (modifier?: string) =>
     modifier ? _bem(unref(namespace), block, '', '', modifier) : ''
 
-  // 创建带后缀的块元素类名 sp-form-item
+  /**
+   * 创建带后缀的块元素类名
+   * @example be('item')
+   * @param blockSuffix 修饰名：item
+   * @returns sp-form-item
+   */
   const be = (blockSuffix?: string, element?: string) =>
     blockSuffix && element
       ? _bem(unref(namespace), block, blockSuffix, element, '')
