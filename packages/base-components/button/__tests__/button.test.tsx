@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
 import Button from '../src/button.vue'
+import SpIcon from '../../icon'
 
 describe('Button', () => {
   test('创建按钮', () => {
@@ -71,19 +72,21 @@ describe('Button', () => {
   //图标
   test('图标', () => {
     const wrapper = mount(() => (
-      <Button type="primary" icon="check">
+      <Button type="primary" pre-icon="check">
         你好
       </Button>
     ))
+
     expect(wrapper.find('.sp-icon').exists()).toBe(true)
     const wrapperSlot = mount(() => (
       <Button type="primary" icon="check">
         {{
-          default: () => <sp-icon icon="check" />,
+          preIcon: () => <SpIcon icon="check" />,
+          default: () => '你好',
         }}
-        你好
       </Button>
     ))
+
     expect(wrapperSlot.find('.sp-icon').exists()).toBe(true)
   })
 })

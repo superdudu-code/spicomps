@@ -4,6 +4,7 @@ export const components = [
     items: [
       { text: 'Button 按钮', link: '/components/button' },
       { text: 'Icon 图标', link: '/components/icon' },
+      { text: 'Input 输入框', link: '/components/input' },
     ],
   },
   {

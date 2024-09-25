@@ -1,7 +1,12 @@
 import DefaultTheme from 'vitepress/theme'
 import { ElementPlusContainer } from '@vitepress-demo-preview/component'
 import '@vitepress-demo-preview/component/dist/style.css'
-import { SpButton, SpConfigProvider, SpIcon } from '@spicomps/base-components'
+import {
+  SpButton,
+  SpConfigProvider,
+  SpIcon,
+  SpInput,
+} from '@spicomps/base-components'
 import type { EnhanceAppContext } from 'vitepress'
 
 import '@spicomps/theme-chalk/src/index.scss'
@@ -9,7 +14,7 @@ import '@spicomps/theme-chalk/src/index.scss'
 import './custom.css'
 
 // 组件库
-const components = [SpIcon, SpButton, SpConfigProvider]
+const components = [SpIcon, SpButton, SpConfigProvider, SpInput]
 // 是否已安装标识
 const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 // 组件库插件
@@ -27,9 +32,7 @@ const Spicomps = {
 export default {
   ...DefaultTheme,
   enhanceApp(ctx: EnhanceAppContext) {
-    ctx.app.component(SpButton.name!, SpButton)
-    ctx.app.component(SpConfigProvider.name!, SpConfigProvider)
-    ctx.app.component(SpIcon.name!, SpIcon)
+    ctx.app.use(Spicomps)
     ctx.app.component('demo-preview', ElementPlusContainer)
   },
 }

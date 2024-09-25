@@ -6,11 +6,12 @@ import {
   SpButton,
   SpIcon,
   SpConfigProvider,
+  SpInput,
 } from '@spicomps/base-components/index'
 import '@spicomps/theme-chalk/src/index.scss'
 
 // 组件库
-const components = [SpIcon, SpButton, SpConfigProvider]
+const components = [SpIcon, SpButton, SpConfigProvider, SpInput]
 // 是否已安装标识
 const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 // 组件库插件
@@ -28,6 +29,6 @@ const Spicomps = {
 //创建vue实例
 const app = createApp(App)
 // 安装组件库
-// app.use(Spicomps)
+app.use(Spicomps)
 //挂载实例
 app.mount('#play')

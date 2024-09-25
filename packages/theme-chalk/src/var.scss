@@ -28,6 +28,8 @@
   @include set-component-css-var('bg-color', $bg-color);
 
   // foot
+  @include set-component-css-var('font-size', $font-size);
+  @include set-component-css-var('font-family', $font-family);
   @include set-css-var-value('font-weight-primary', 500);
   @include set-css-var-value('font-line-height-primary', 24px);
 
@@ -42,4 +44,14 @@
   );
 
   @include set-component-css-var('border-radius', $border-radius);
+
+  // Transition
+  // refer to this website to get the bezier motion function detail
+  // https://cubic-bezier.com/#p1,p2,p3,p4 (change px as your function parameter)
+  @include set-component-css-var('transition-duration', $transition-duration);
+
+  @include set-component-css-var('transition-function', $transition-function);
+  @include set-component-css-var('transition', $transition);
+
+  @include set-component-css-var('component-size', $common-component-size);
 }

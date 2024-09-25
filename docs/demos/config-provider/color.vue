@@ -1,11 +1,11 @@
 <template>
   <sp-config-provider :theme="theme">
     <div class="demo-container">
-      <sp-button type="primary" size="large">test</sp-button>
-      <sp-button type="warning" size="large">test</sp-button>
-      <sp-button type="success" size="large">test</sp-button>
-      <sp-button type="danger" size="large">test</sp-button>
-      <sp-button type="info" size="large">test</sp-button>
+      <sp-button type="primary">test</sp-button>
+      <sp-button type="warning">test</sp-button>
+      <sp-button type="success">test</sp-button>
+      <sp-button type="danger">test</sp-button>
+      <sp-button type="info">test</sp-button>
     </div>
     <sp-button @click="handleChangeColorTheme">切换颜色主题</sp-button>
   </sp-config-provider>
