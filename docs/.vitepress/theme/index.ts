@@ -4,6 +4,7 @@ import '@vitepress-demo-preview/component/dist/style.css'
 import {
   SpButton,
   SpConfigProvider,
+  SpElipsis,
   SpIcon,
   SpInput,
 } from '@spicomps/base-components'
@@ -14,7 +15,7 @@ import '@spicomps/theme-chalk/src/index.scss'
 import './custom.css'
 
 // 组件库
-const components = [SpIcon, SpButton, SpConfigProvider, SpInput]
+const components = [SpIcon, SpButton, SpConfigProvider, SpInput, SpElipsis]
 // 是否已安装标识
 const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 // 组件库插件

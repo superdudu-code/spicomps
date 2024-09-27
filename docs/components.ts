@@ -5,6 +5,7 @@ export const components = [
       { text: 'Button 按钮', link: '/components/button' },
       { text: 'Icon 图标', link: '/components/icon' },
       { text: 'Input 输入框', link: '/components/input' },
+      { text: 'Elipsis 文字缩略', link: '/components/elipsis' },
     ],
   },
   {
