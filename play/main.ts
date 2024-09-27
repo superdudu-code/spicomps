@@ -7,11 +7,12 @@ import {
   SpIcon,
   SpConfigProvider,
   SpInput,
+  SpElipsis,
 } from '@spicomps/base-components/index'
 import '@spicomps/theme-chalk/src/index.scss'
 
 // 组件库
-const components = [SpIcon, SpButton, SpConfigProvider, SpInput]
+const components = [SpIcon, SpButton, SpConfigProvider, SpInput, SpElipsis]
 // 是否已安装标识
 const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 // 组件库插件

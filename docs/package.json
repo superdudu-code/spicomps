@@ -11,7 +11,8 @@
   "dependencies": {
     "@spicomps/base-components": "workspace:^",
     "@vitepress-demo-preview/component": "^2.3.2",
-    "@vitepress-demo-preview/plugin": "^1.2.3"
+    "@vitepress-demo-preview/plugin": "^1.2.3",
+    "element-plus": "^2.8.3"
   },
   "devDependencies": {
     "minimist": "^1.2.8",
