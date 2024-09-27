@@ -27,10 +27,17 @@ description: 'Elipsis'
 
 ## API
 
-| 属性名        | 说明                             | 类型                       | 默认值   |
-| ---------- | ------------------------------ | ------------------------ | ----- |
-| elipsis    | 是否收缩                           | `boolean`                | false |
-| text       | 内容文字(必填)                       | `string`                 | input |
-| max-lines  | 最大行数                           | `number`                 | 1     |
-| position   | 省略位置                           | `end \| start \| middle` | end   |
-| lineHeight | 行高 | `string`                 | -     |
+| 属性名     | 说明           | 类型                     | 默认值 |
+| ---------- | -------------- | ------------------------ | ------ |
+| elipsis    | 是否收缩       | `boolean`                | false  |
+| text       | 内容文字(必填) | `string`                 | input  |
+| max-lines  | 最大行数       | `number`                 | 1      |
+| position   | 省略位置       | `end \| start \| middle` | end    |
+| lineHeight | 行高           | `string`                 | -      |
+
+## 插槽
+
+| 插槽名 | 说明 |
+| ------ | ---- |
+| prefix | 前缀 |
+| suffix | 后缀 |

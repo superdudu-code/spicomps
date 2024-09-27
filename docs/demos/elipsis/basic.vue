@@ -21,9 +21,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ElSlider, ElSwitch } from 'element-plus'
-import 'element-plus/es/components/switch/style/css'
-import 'element-plus/es/components/slider/style/css'
 
 const isElipsis = ref(true)
 const width = ref(230)

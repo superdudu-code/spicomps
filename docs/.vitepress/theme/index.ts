@@ -8,9 +8,8 @@ import {
   SpIcon,
   SpInput,
 } from '@spicomps/base-components'
+import { ElementPlus } from './elementplus'
 import type { EnhanceAppContext } from 'vitepress'
-
-import '@spicomps/theme-chalk/src/index.scss'
 
 import './custom.css'
 
@@ -34,6 +33,7 @@ export default {
   ...DefaultTheme,
   enhanceApp(ctx: EnhanceAppContext) {
     ctx.app.use(Spicomps)
+    ctx.app.use(ElementPlus)
     ctx.app.component('demo-preview', ElementPlusContainer)
   },
 }

@@ -20,8 +20,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ElSlider } from 'element-plus'
-import 'element-plus/es/components/slider/style/css'
 
 const isElipsis = ref(true)
 const text = ref(
