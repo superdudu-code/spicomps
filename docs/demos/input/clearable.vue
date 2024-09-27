@@ -17,9 +17,3 @@
 import { ref } from 'vue'
 const inputValue = ref('啊！我要被清除掉啦！救命！help！！！')
 </script>
-
-<style>
-.demo-container {
-  margin: 10px;
-}
-</style>

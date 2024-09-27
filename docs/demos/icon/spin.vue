@@ -42,9 +42,6 @@ library.add(faXmark, faImage)
 </script>
 
 <style scoped>
-.demo-container {
-  margin: 10px 0;
-}
 .sp-icon {
   font-size: 20px;
   margin-right: 20px;

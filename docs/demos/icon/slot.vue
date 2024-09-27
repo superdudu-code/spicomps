@@ -12,9 +12,6 @@
 </template>
 
 <style scoped>
-.demo-container {
-  margin: 10px 0;
-}
 .sp-icon {
   margin: 6px;
   font-size: 20px;

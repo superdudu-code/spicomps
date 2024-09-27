@@ -33,9 +33,3 @@ const text = ref(
 
 const position = ref('end')
 </script>
-
-<style>
-.demo-container {
-  margin-bottom: 10px;
-}
-</style>

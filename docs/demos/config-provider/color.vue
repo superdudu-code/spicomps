@@ -48,9 +48,3 @@ const handleChangeColorTheme = () => {
   }
 }
 </script>
-
-<style>
-.demo-container {
-  margin: 10px;
-}
-</style>

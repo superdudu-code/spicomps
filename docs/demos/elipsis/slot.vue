@@ -28,10 +28,9 @@ const text = ref(
 const width = ref(230)
 </script>
 
-<style>
+<style scope>
 .demo-container {
   width: 230px;
-  margin-bottom: 10px;
   line-height: 1.5;
 }
 </style>

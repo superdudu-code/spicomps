@@ -14,9 +14,3 @@
 import { ref } from 'vue'
 const inputValue = ref('')
 </script>
-
-<style>
-.demo-container {
-  margin: 10px;
-}
-</style>

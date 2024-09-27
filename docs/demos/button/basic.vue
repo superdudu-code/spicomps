@@ -26,9 +26,3 @@
     <sp-button type="danger" round>危险按钮</sp-button>
   </div>
 </template>
-
-<style>
-.demo-container {
-  margin: 10px;
-}
-</style>

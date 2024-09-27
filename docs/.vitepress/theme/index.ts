@@ -12,6 +12,7 @@ import { ElementPlus } from './elementplus'
 import type { EnhanceAppContext } from 'vitepress'
 
 import './custom.css'
+import '@spicomps/theme-chalk/src/index.scss'
 
 // 组件库
 const components = [SpIcon, SpButton, SpConfigProvider, SpInput, SpElipsis]

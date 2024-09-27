@@ -8,9 +8,3 @@
     <sp-button size="small" round>small</sp-button>
   </div>
 </template>
-
-<style>
-.demo-container {
-  margin: 10px;
-}
-</style>

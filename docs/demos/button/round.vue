@@ -8,9 +8,3 @@
     <sp-button round type="danger">危险按钮</sp-button>
   </div>
 </template>
-
-<style>
-.demo-container {
-  margin: 10px;
-}
-</style>

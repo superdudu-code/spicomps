@@ -28,9 +28,3 @@ const text = ref(
   '怅卧新春白袷衣，白门寥落意多违。红楼隔雨相望冷，珠箔飘灯独自归。远路应悲春晼晚，残宵犹得梦依稀。玉珰缄札何由达，万里云罗一雁飞。'
 )
 </script>
-
-<style>
-.demo-container {
-  margin-bottom: 10px;
-}
-</style>

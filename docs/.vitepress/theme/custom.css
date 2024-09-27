@@ -20,3 +20,10 @@ p {
 .vitepress-demo-preview-preview {
   padding: 20px !important;
 }
+
+.demo-container {
+  margin: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
