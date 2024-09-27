@@ -22,16 +22,15 @@ description: 'Elipsis'
 ## 插槽
 
 插槽作用域抛出两个参数：`isOver` 是否溢出， `elipsis` 是否处于收缩状态
+
 <preview path="../demos/elipsis/slot.vue" />
 
 ## API
 
-| 属性名        | 说明                | 类型                                  | 默认值 |
-| ------------- | ------------------- | ------------------------------------- | ------ |
-| size          | 大小                | `'large'\| 'small'`                   | —      |
-| type          | 类型                | `'input' \| 'password' \| 'textarea'` | input  |
-| show-password | 是否显示密码        | `boolean`                             | false  |
-| loading       | 加载中状态          | `boolean`                             | false  |
-| disabled      | 禁用                | `boolean`                             | false  |
-| clearable     | 清除                | `boolean`                             | false  |
-| autofocus     | 原生 autofocus 属性 | `boolean`                             | false  |
+| 属性名        | 说明                             | 类型                       | 默认值   |
+| ---------- | ------------------------------ | ------------------------ | ----- |
+| elipsis    | 是否收缩                           | `boolean`                | false |
+| text       | 内容文字(必填)                       | `string`                 | input |
+| max-lines  | 最大行数                           | `number`                 | 1     |
+| position   | 省略位置                           | `end \| start \| middle` | end   |
+| lineHeight | 行高 | `string`                 | -     |
