@@ -1,6 +1,10 @@
 <template>
-  <div ref="elipsisWrapper">
-    <span ref="textWrap" :class="classList">
+  <div
+    ref="elipsisWrapper"
+    :class="classList"
+    :style="{ 'line-height': props.lineHeight }"
+  >
+    <span ref="textWrap">
       <span v-if="slots.prefix" ref="prefixRef" :class="ns.e('prefix')">
         <slot name="prefix" :elipsis="isClamped" :is-over="isOver" />
       </span>

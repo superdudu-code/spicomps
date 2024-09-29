@@ -2,7 +2,10 @@
   <div class="demo-container">
     <el-slider v-model="width" :min="100" :max="500" />
   </div>
-  <div class="demo-container" :style="`width: ${width}px`">
+  <div
+    class="demo-container elipsis-slot-container"
+    :style="`width: ${width}px`"
+  >
     <sp-elipsis :text="text" :elipsis="isElipsis" :max-lines="3">
       <template #suffix="scope">
         <sp-button
@@ -28,8 +31,8 @@ const text = ref(
 const width = ref(230)
 </script>
 
-<style scope>
-.demo-container {
+<style>
+.elipsis-slot-container {
   width: 230px;
   line-height: 1.5;
 }
