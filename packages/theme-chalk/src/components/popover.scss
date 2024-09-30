@@ -1,0 +1,88 @@
+@use 'sass:map';
+@use '../mixins/mixins.scss' as *;
+@use '../mixins/button' as *;
+@use '../common//var.scss' as *;
+
+$popover-popper: () !default;
+$popover-popper: map.merge(
+  (
+    'padding': 5px 10px,
+    'border-radius': getCssVar('border-radius', 'base'),
+    'border-color': getCssVar('border-color', 'light'),
+    'text-color': getCssVar('text-color', 'regular'),
+    'bg-color': getCssVar('bg-color'),
+    'font-size': getCssVar('font-size', 'base'),
+  ),
+  $popover-popper
+);
+
+$sides: (
+  'top': 'bottom',
+  'bottom': 'top',
+  'left': 'right',
+  'right': 'left',
+);
+
+@include b(popover) {
+  @include e(popper) {
+    @include set-component-css-var(popover-popper, $popover-popper);
+  }
+  @include e(popper) {
+    width: max-content;
+    border-radius: getCssVar('popover-popper', 'border-radius');
+    color: getCssVar('popover-popper', 'text-color');
+    background-color: getCssVar('popover-popper', 'bg-color');
+    padding: getCssVar('popover-popper', 'padding');
+    border: 1px solid getCssVar('popover-popper', 'border-color');
+    font-size: getCssVar('popover-popper', 'font-size');
+    box-shadow: getCssVar('box-shadow', 'light');
+  }
+
+  @include e(arrow) {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid getCssVar('popover-popper', 'border-color');
+    background-color: getCssVar('popover-popper', 'bg-color');
+    transform: rotate(45deg);
+    box-sizing: border-box;
+
+    @include m(top) {
+      bottom: -5px;
+      border-top-color: transparent;
+      border-left-color: transparent;
+    }
+    @include m(bottom) {
+      top: -5px;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+    }
+    @include m(left) {
+      right: -5px;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+    @include m(right) {
+      left: -5px;
+      border-top-color: transparent;
+      border-right-color: transparent;
+    }
+  }
+
+  @include e(popper) {
+    @include when(dark) {
+      @include css-var-from-global(
+        ('popover-popper', 'bg-color'),
+        ('text-color', 'primary')
+      );
+      @include css-var-from-global(
+        ('popover-popper', 'border-color'),
+        ('text-color', 'primary')
+      );
+      @include css-var-from-global(
+        ('popover-popper', 'text-color'),
+        ('text-color', 'lighter')
+      );
+    }
+  }
+}

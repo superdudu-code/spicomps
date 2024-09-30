@@ -6,6 +6,7 @@ export const components = [
       { text: 'Icon 图标', link: '/components/icon' },
       { text: 'Input 输入框', link: '/components/input' },
       { text: 'Elipsis 文字缩略', link: '/components/elipsis' },
+      { text: 'Popover 弹出框', link: '/components/popover' },
     ],
   },
   {

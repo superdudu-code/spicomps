@@ -7,6 +7,7 @@ import {
   SpElipsis,
   SpIcon,
   SpInput,
+  SpPopover,
 } from '@spicomps/base-components'
 import { ElementPlus } from './elementplus'
 import type { EnhanceAppContext } from 'vitepress'
@@ -15,7 +16,14 @@ import './custom.css'
 import '@spicomps/theme-chalk/src/index.scss'
 
 // 组件库
-const components = [SpIcon, SpButton, SpConfigProvider, SpInput, SpElipsis]
+const components = [
+  SpIcon,
+  SpButton,
+  SpConfigProvider,
+  SpInput,
+  SpElipsis,
+  SpPopover,
+]
 // 是否已安装标识
 const INSTALLED_KEY = Symbol('INSTALLED_KEY')
 // 组件库插件

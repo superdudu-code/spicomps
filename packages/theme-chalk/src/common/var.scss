@@ -99,6 +99,7 @@ $text-color: map.merge(
     'secondary': #909399,
     'placeholder': #a8abb2,
     'disabled': #c0c4cc,
+    'lighter': #ebeef5,
   ),
   $text-color
 );
@@ -182,6 +183,29 @@ $font-family: map.merge(
       "'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif"
   ),
   $font-family
+);
+
+// Box-shadow
+$box-shadow: () !default;
+$box-shadow: map.merge(
+  (
+    '': (
+      0px 12px 32px 4px rgba(0, 0, 0, 0.04),
+      0px 8px 20px rgba(0, 0, 0, 0.08),
+    ),
+    'light': (
+      0px 0px 12px rgba(0, 0, 0, 0.12),
+    ),
+    'lighter': (
+      0px 0px 6px rgba(0, 0, 0, 0.12),
+    ),
+    'dark': (
+      0px 16px 48px 16px rgba(0, 0, 0, 0.08),
+      0px 12px 32px rgba(0, 0, 0, 0.12),
+      0px 8px 16px -8px rgba(0, 0, 0, 0.16),
+    ),
+  ),
+  $box-shadow
 );
 
 $font-size: () !default;

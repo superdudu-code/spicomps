@@ -44,6 +44,7 @@
     "vue": "^3.4.29"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.11",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.8",

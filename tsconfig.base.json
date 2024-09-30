@@ -19,6 +19,8 @@
       // 路径映射，相对于baseUrl
       "@spicomps/*": ["packages/*"]
     },
+    "jsx": "preserve", // 指定JSX代码生成用于的开发环境
+    "jsxImportSource": "vue", // 指定JSX代码生成用于的开发环境
     "preserveSymlinks": true // 是否保留符号链接，默认：false
   }
 }
