@@ -5,7 +5,6 @@ layout: home
 hero:
   name: 'Spicomps'
   text: '一个特别的组件库'
-  tagline: 组件库描述
   image:
     src: /logo_image.png
     alt: VitePress
@@ -20,11 +19,11 @@ hero:
 features:
   - title: 功能
     icon: 🔨
-    details: 功能/特点 1 具体描述信息。
-  - title: Feature B
+    details: 为大家提供一些特殊的组件
+  - title: 思路
     icon: 🧩
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
+    details: 从中获取灵感，实现自己的业务组件
+  - title: 荣幸
     icon: ✈️
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: 如果有帮助你，是我的荣幸
 ---
