@@ -12,6 +12,60 @@
 
 由于他是一个互补的组件库，所以一些基础组件，只会为了特殊组件去开发，以减少不必要的代码
 
+## 快速开始
+
+### 安装
+
+```
+# 选择一个你喜欢的包管理器
+
+# NPM
+$ npm install spicomps --save
+
+# Yarn
+$ yarn add spicomps
+
+# pnpm
+$ pnpm install spicomps
+```
+
+### 完整引入
+
+```js
+// main.ts
+import { createApp } from 'vue'
+import Spicomps from 'spicomps'
+import 'spicomps/dist/index.css'
+import App from './App.vue'
+
+const app = createApp(App)
+
+app.use(Spicomps)
+app.mount('#app')
+```
+
+### 按需引入
+
+```js
+// spicomps.js
+
+// 样式全部引入：import 'spicomps/dist/index.css'
+// 按需引入
+import 'spicomps/es/base-components/base/style/css.mjs'
+import 'spicomps/es/base-components/button/style/css.mjs'
+import 'spicomps/es/base-components/popover/style/css.mjs'
+// 组件引入
+import { SpButton, SpPopover } from 'spicomps'
+const components = [SpPopover, SpButton]
+export default {
+  install(app) {
+    components.forEach((item) => {
+      app.use(item)
+    })
+  },
+}
+```
+
 ## 期望组件
 
 1. 复合下拉组件，支持下拉搜索、筛选、分页

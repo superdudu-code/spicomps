@@ -22,6 +22,7 @@ const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '组件库介绍', link: '/guide/' },
         { text: '快速开始', link: '/guide/quickstart' },
+        { text: '计划', link: '/guide/plan' },
       ],
     },
   ],
