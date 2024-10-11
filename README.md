@@ -18,7 +18,7 @@
 2. 卡片式单选框
 3. 图片裁剪组件，支持固定尺寸、圆形裁剪、自定义路径裁剪
 4. 表格枚举翻译，通过传入 option（label、value、color、icon），自动完成翻译工作，支持颜色、icon 显示等
-5. <p style="color: #43BE15">文本省略组件，支持省略位置（头部、尾部、中间），支持插槽 <img src="https://img.shields.io/badge/完成-{}.svg" style="vertical-align: middle;" /></p>
+5. 文本省略组件，支持省略位置（头部、尾部、中间），支持插槽 <img src="https://img.shields.io/badge/完成-{}.svg" style="vertical-align: middle;" />
 
 hooks
 

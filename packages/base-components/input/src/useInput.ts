@@ -1,4 +1,4 @@
-import { ShallowRef, computed, ref, shallowRef } from 'vue'
+import { computed, ref, shallowRef } from 'vue'
 import { useEventListener } from '@vueuse/core'
 import { UPDATE_MODEL_EVENT } from '@spicomps/constants'
 import type { ComputedRef, Ref } from 'vue'

@@ -27,6 +27,9 @@
   "scripts": {
     "cz": "czg",
     "dev": "pnpm -C play dev",
+    "build": "pnpm run -C internal/build start",
+    "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
+    "clean:dist": "rimraf dist",
     "runall": "pnpm run typecheck:web && pnpm run typecheck:play",
     "typecheck:web": "vue-tsc -p tsconfig.web.json --composite false --noEmit",
     "typecheck:play": "vue-tsc -p tsconfig.play.json --composite false --noEmit",

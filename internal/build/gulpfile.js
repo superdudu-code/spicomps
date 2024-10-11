@@ -3,7 +3,8 @@ import { buildFullEntry } from './full-bundle.js'
 import { buildModules } from './modules.js'
 import { generateTypesDefinitions } from './types-definitions.js'
 import { copyTypesDefinitions } from './copyTypesDefinitions.js'
-import { copyFiles } from './copyFiles.js'
+import { copyFiles, copyFullStyle } from './copyFiles.js'
+import { run } from './utils/process'
 
 // 这里的代码，是为了解决 vue 3.3.x以后，构建报错 __name 的问题，
 // 可以看这个 https://github.com/vuejs/core/issues/8303
@@ -14,8 +15,12 @@ const __name = (target, value) =>
 globalThis.__name = __name
 
 export default series(
-  parallel(buildFullEntry, buildModules, generateTypesDefinitions),
+  () => run('pnpm run clean'),
+  parallel(
+    buildModules,
+    buildFullEntry,
+    generateTypesDefinitions,
+    series(() => run('pnpm run -C packages/theme-chalk build'), copyFullStyle)
+  ),
   parallel(copyTypesDefinitions, copyFiles)
-
-  // parallel(generateTypesDefinitions)
 )

@@ -149,8 +149,8 @@ watch(
   },
   { flush: 'post', immediate: true }
 )
-let closeTimer: NodeJS.Timeout | undefined
-let openTimer: NodeJS.Timeout | undefined
+let closeTimer: ReturnType<typeof setTimeout> | undefined
+let openTimer: ReturnType<typeof setTimeout> | undefined
 function openPopper() {
   if (props.visible === false) return
   if (props.disabled) return

@@ -71,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
+import { computed, nextTick, onMounted, shallowRef, watch } from 'vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faCircleXmark,

@@ -3,28 +3,22 @@
  */
 
 import process from 'process'
-import path, { resolve } from 'path'
-import { fileURLToPath } from 'url'
+import path from 'path'
 import { readFile } from 'fs/promises'
 import { Project } from 'ts-morph'
 import glob from 'fast-glob'
 import * as vueCompiler from 'vue/compiler-sfc'
 
-const __filenameNew = fileURLToPath(import.meta.url)
-const __dirnameNew = path.dirname(__filenameNew)
-const projRoot = resolve(__dirnameNew, '..', '..')
-const pkgRoot = resolve(projRoot, 'packages')
-const epRoot = resolve(pkgRoot, 'spicomps')
-const buildOutput = resolve(projRoot, 'dist')
-
+import { buildOutput, epRoot, pkgRoot, projRoot } from './utils/paths'
 const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.web.json')
 const outDir = path.resolve(buildOutput, 'types')
 
 const excludeFiles = (files) => {
-  const excludes = ['node_modules']
-  return files.filter(
-    (path) => !excludes.some((exclude) => path.includes(exclude))
-  )
+  const excludes = ['node_modules', 'test', 'mock', 'gulpfile', 'dist']
+  return files.filter((path) => {
+    const position = path.startsWith(projRoot) ? projRoot.length : 0
+    return !excludes.some((exclude) => path.includes(exclude, position))
+  })
 }
 
 export const generateTypesDefinitions = async () => {
@@ -102,7 +96,7 @@ async function addSourceFiles(project) {
     ...epPaths.map(async (file) => {
       // 读取 ./packages/spicomps 目录下的文件，并手动通过 createSourceFile 方法添加 ts-morph 项目的 TypeScript 源文件
       const content = await readFile(path.resolve(epRoot, file), 'utf-8')
-      project.createSourceFile(path.resolve(projRoot, file), content)
+      project.createSourceFile(path.resolve(pkgRoot, file), content)
     }),
   ])
 }

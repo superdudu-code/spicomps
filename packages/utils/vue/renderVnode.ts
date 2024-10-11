@@ -1,4 +1,4 @@
-import { type PropType, defineComponent, h } from 'vue'
+import { defineComponent } from 'vue'
 
 /**
  * 渲染 vnode

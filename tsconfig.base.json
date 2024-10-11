@@ -17,7 +17,8 @@
     "types": [],
     "paths": {
       // 路径映射，相对于baseUrl
-      "@spicomps/*": ["packages/*"]
+      "@spicomps/*": ["packages/*"],
+      "spicomps": ["packages/spicomps"]
     },
     "jsx": "preserve", // 指定JSX代码生成用于的开发环境
     "jsxImportSource": "vue", // 指定JSX代码生成用于的开发环境

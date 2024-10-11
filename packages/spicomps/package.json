@@ -2,9 +2,78 @@
   "name": "spicomps",
   "version": "0.0.1-dev.1",
   "description": "一个特殊的vue3组件库",
+  "keywords": [
+    "spicomps",
+    "vue",
+    "components",
+    "ui"
+  ],
+  "homepage": "https://superdudu-code.github.io/spicomps/",
+  "bugs": {
+    "url": "https://github.com/superdudu-code/spicomps/issues"
+  },
   "license": "MIT",
   "main": "lib/index.cjs",
   "module": "es/index.mjs",
+  "types": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs",
+      "require": "./lib/index.cjs"
+    },
+    "./global": {
+      "types": "./global.d.ts"
+    },
+    "./es": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs"
+    },
+    "./lib": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.cjs"
+    },
+    "./es/*.mjs": {
+      "types": "./es/*.d.ts",
+      "import": "./es/*.mjs"
+    },
+    "./es/*": {
+      "types": [
+        "./es/*.d.ts",
+        "./es/*/index.d.ts"
+      ],
+      "import": "./es/*.mjs"
+    },
+    "./lib/*.cjs": {
+      "types": "./lib/*.d.ts",
+      "require": "./lib/*.cjs"
+    },
+    "./lib/*": {
+      "types": [
+        "./lib/*.d.ts",
+        "./lib/*/index.d.ts"
+      ],
+      "require": "./lib/*.cjs"
+    },
+    "./*": "./*"
+  },
+  "unpkg": "dist/index.full.js",
+  "jsdelivr": "dist/index.full.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superdudu-code/spicomps.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "style": "dist/index.css",
+  "sideEffects": [
+    "dist/*",
+    "theme-chalk/**/*.css",
+    "theme-chalk/src/**/*.scss",
+    "es/components/*/style/*",
+    "lib/components/*/style/*"
+  ],
   "peerDependencies": {
     "vue": "^3.4.29"
   },

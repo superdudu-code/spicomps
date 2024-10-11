@@ -7,7 +7,7 @@
   "include": [
     // 使用 include 来指定应从绝对类型中使用哪些类型
     "packages",
-    "typings/components.d.ts",
+    "typings/global.d.ts",
     "typings/env.d.ts",
     "play/main.ts",
     "play/env.d.ts",
